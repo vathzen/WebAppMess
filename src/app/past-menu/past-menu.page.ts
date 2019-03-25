@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { DatePicker } from '@ionic-native/date-picker/ngx';
 
 @Component({
   selector: 'app-past-menu',

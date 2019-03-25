@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { DatePicker } from '@ionic-native/date-picker/ngx';
 
 @Component({
   selector: 'app-orders',
@@ -9,7 +8,7 @@ import { DatePicker } from '@ionic-native/date-picker/ngx';
 })
 export class OrdersPage implements OnInit {
 
-  constructor(public navCtrl: NavController, private datePicker: DatePicker) { }
+  constructor(public navCtrl: NavController) { }
   picker_date=null;
   text_date=null;
   private user={username:'', pswrd:'', contractor:'', messname:''}; //idk whr to use these yet
@@ -22,23 +21,6 @@ export class OrdersPage implements OnInit {
   public colspan=[];
   public colhead=[];
   public codes=[]; //list of elements {regnum:'reg_num-here',code_array:code_array_here}
-
-  today: any;
-
-  async openDatepicker(){
-    this.datePicker.show({
-      date: new Date(),
-      mode: 'date',
-      androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
-    }).then(
-      date => {
-        console.log('Got date: ', date)
-      },
-      err => {
-        console.log('Error occurred while getting date: ', err)
-      }
-    );
-  }
 
   ngOnInit(){
     //this.picker_date=this.text_date=today's date from server
@@ -58,7 +40,7 @@ export class OrdersPage implements OnInit {
     this.orders.forEach(item => {//each iteration for each meal FOR GIVEN DATE
       item.item1='New meal1!';//get item 1 from db
       item.item1_count=50;//get item 1 count from db
-      item.item2='summa';//get item 2 from db (EVEN IF NULL)
+      item.item2='';//get item 2 from db (EVEN IF NULL)
       item.item2_count=null;//get item 2 count from db (EVEN IF NULL)
     });
   }

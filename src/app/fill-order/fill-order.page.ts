@@ -30,7 +30,7 @@ export class FillOrderPage implements OnInit {
   updateMenu(){
     //update menu to db
     console.log(this.menu);
-    //this.navCtrl.navigateRoot(['buttons']);
+    this.navCtrl.navigateRoot(['buttons']);
   }
 
   createMenu(){

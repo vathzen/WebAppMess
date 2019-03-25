@@ -5,7 +5,33 @@
     margin-inline-end: 20px;
     cursor: pointer;
 }
-ion-card{
+mat-form-field{
+    margin-inline-start: 30px;
+    margin-inline-end: 30px;
+}
+.calenderico{
+    width: 24px;
+    height: 24px;
+    background: #fff url('../../assets/images/calendarico.png') no-repeat center center / cover;
+}
+table{
+    font-size: 11px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border: 1px solid black;
+}
+th, td {
+    padding: 5px;
+    border: 1px solid black
+}
+.studentcard{
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 2px solid rgb(0, 162, 255);
+}
+.itemcard{
     width: 70%;
     margin-left: auto;
     margin-right: auto;
@@ -14,7 +40,7 @@ ion-card{
 ion-note{
     --color:black;
     margin-top: 4%;
-    font-size: 14px;
+    font-size: 16px;
 }
 .total{
     margin-top: 0px;
