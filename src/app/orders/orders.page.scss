@@ -1,0 +1,47 @@
+.chefico{
+    width: 38.6px;
+    height: 39.6px;
+    background: #fff url('../../assets/images/chefico.png') no-repeat center center / cover;
+    margin-inline-end: 20px;
+    cursor: pointer;
+}
+ion-content{
+    text-align: center;
+}
+ion-card{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 2px solid rgb(0, 162, 255);
+    margin-bottom: 40px;
+}
+.calendar{
+    width: 300px;
+    height: 32px;
+    margin-left: 55%;
+}
+.calenderico{
+    width: 24px;
+    height: 24px;
+    background: #fff url('../../assets/images/calendarico.png') no-repeat center center / cover;
+}
+.meal{
+    font-size: 20px;
+}
+.orderhead{
+    font-size: 25px;
+}
+table{
+    font-size: 11px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border: 1px solid black;
+}
+th, td {
+    padding: 5px;
+    border: 1px solid black
+}
+.endbuttons{
+    margin: 30px;
+}

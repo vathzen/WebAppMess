@@ -1,0 +1,33 @@
+.chefico{
+    width: 38.6px;
+    height: 39.6px;
+    background: #fff url('../../assets/images/chefico.png') no-repeat center center / cover;
+    margin-inline-end: 20px;
+    cursor: pointer;
+}
+ion-content{
+    text-align: center;
+}
+.heading{
+    font-size: 30px;
+}
+.calendar{
+    width: 300px;
+    height: 32px;
+    margin-left: 10%;
+}
+.calenderico{
+    width: 24px;
+    height: 24px;
+    background: #fff url('../../assets/images/calendarico.png') no-repeat center center / cover;
+}
+ion-list{
+    --border-bottom: 2px;
+}
+.itemhead{
+    font-size: 20px;
+    --background:rgb(0, 162, 255);
+}
+.firstitem{
+    width: 70%;
+}

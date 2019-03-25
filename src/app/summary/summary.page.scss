@@ -1,0 +1,21 @@
+.chefico{
+    width: 38.6px;
+    height: 39.6px;
+    background: #fff url('../../assets/images/chefico.png') no-repeat center center / cover;
+    margin-inline-end: 20px;
+    cursor: pointer;
+}
+ion-card{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 2px solid rgb(0, 162, 255);
+}
+ion-note{
+    --color:black;
+    margin-top: 4%;
+    font-size: 14px;
+}
+.total{
+    margin-top: 0px;
+}

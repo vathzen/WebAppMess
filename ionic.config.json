@@ -1,0 +1,7 @@
+{
+  "name": "WebAppMess",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

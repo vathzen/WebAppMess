@@ -1,0 +1,40 @@
+ion-content{
+    text-align: center;
+}
+.chefico{
+    width: 38.6px;
+    height: 39.6px;
+    background: #fff url('../../assets/images/chefico.png') no-repeat center center / cover;
+    margin-inline-end: 20px;
+    cursor: pointer;
+}
+.head{
+    margin-inline-start: 40%;
+    font-size: 30px;
+}
+.date{
+    margin-inline-start: 15%;
+    font-size: 20px;
+}
+ion-list{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    --border-bottom: 2px;
+    width: 90%;
+}
+.itemhead{
+    font-size: 20px;
+    --background:rgb(0, 162, 255);
+}
+ion-item{
+    --highlight-color-focused:rgb(0, 162, 255);
+    --highlight-color-valid:rgb(0, 162, 255);
+    --highlight-color-invalid:rgb(0, 162, 255);
+}
+.firstitem{
+    width: 70%;
+}
+.backbutton{
+    margin-right: 100px;
+}

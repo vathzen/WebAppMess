@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item lines="none">
+        <div class="chefico" (click)="viewButtons()"></div>
+        <ion-button color="primary" size="default" fill="solid" (click)="createMenu()">
+            <ion-ripple-effect></ion-ripple-effect>
+            Create New Menu
+        </ion-button>
+        <ion-button color="primary" size="default" fill="solid" (click)="viewOrders()">
+            <ion-ripple-effect></ion-ripple-effect>
+            View Orders
+        </ion-button>
+        <ion-button color="primary" size="default" fill="solid" (click)="viewMenu()">
+            <ion-ripple-effect></ion-ripple-effect>
+            View Past Menu
+        </ion-button>
+        <ion-button color="primary" size="default" fill="solid" (click)="viewMonthlySummary()">
+            <ion-ripple-effect></ion-ripple-effect>
+            Monthly Summary
+        </ion-button>
+        <ion-button slot="end" color="warning" size="default" fill="solid" (click)="logout()">
+            <ion-ripple-effect></ion-ripple-effect>
+            Log Out
+        </ion-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-item lines="none">  
+        <ion-label class="head">
+            TODAY'S MENU
+        </ion-label>
+        <ion-label class="date">
+            Date: 13/03/1999 <!--Use date obj-->
+        </ion-label>
+    </ion-item>
+
+    <ion-list lines = "none" *ngFor="let entry of menu">
+        <ion-item class="itemhead">
+            <ion-label>{{entry.mealname}}</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+            <ion-item class="firstitem" lines="inset">
+                <ion-label position="floating">Item #1</ion-label>
+                <ion-input [(ngModel)]="entry.item1" type="text"></ion-input>
+            </ion-item>
+            <ion-item slot = "end" lines="inset">
+                <ion-label position="floating">Cost #1 (Rs)</ion-label>
+                <ion-input [(ngModel)]="entry.item1_cost" type="number"></ion-input>
+            </ion-item>
+        </ion-item>
+        <ion-item lines="none">
+            <ion-item class="firstitem" lines="inset">
+                <ion-label position="floating">Item #2</ion-label>
+                <ion-input [(ngModel)]="entry.item2" type="text"></ion-input>
+            </ion-item>
+            <ion-item slot = "end" lines="inset"> 
+                <ion-label position="floating">Cost #2 (Rs)</ion-label>
+                <ion-input [(ngModel)]="entry.item2_cost" type="number"></ion-input>
+            </ion-item>
+        </ion-item>
+    </ion-list>
+
+    <ion-button class="backbutton" color="warning" size="default" fill="solid" (click)="goBack()">
+            BACK
+        </ion-button>
+    <ion-button color="primary" size="default" fill="solid" (click)="updateMenu()">
+        UPDATE MENU
+    </ion-button>
+</ion-content>
