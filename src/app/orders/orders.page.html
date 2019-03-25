@@ -56,7 +56,6 @@
   </ion-label>
 
   <table>
-    <!--If 2nd meal doesnt exist, that col shld not appear-->
   <tr>
       <th rowspan="2">RegNum</th>
       <th [attr.colspan]="colspan[0]">Breakfast</th> 
@@ -70,87 +69,6 @@
         <td>{{row.regnum}}</td>
         <td *ngFor="let code of row.code_array">{{code}}</td> 
     </tr>
-    <!--<tr>
-        <th>120004002</th>
-        <th>-</th>
-        <th>-</th>
-        <th>MB26DK</th>
-        <th>-</th>
-        <th>A48K27</th>
-        <th>-</th>
-    </tr>
-    <tr>
-        <th>120004003</th>
-        <th>GHKFJ2</th>
-        <th>-</th>
-        <th>-</th>
-        <th>-</th>
-        <th>IEGJEE</th>
-        <th>-</th>
-    </tr>
-    <tr>
-        <th>120004004</th>
-        <th>-</th>
-        <th>-</th>
-        <th>IRGGJE</th>
-        <th>-</th>
-        <th>9GM3JG</th>
-        <th>-</th>
-    </tr>
-    <tr>
-        <th>120004005</th>
-        <th>2KGP3J</th>
-        <th>-</th>
-        <th>-</th>
-        <th>-</th>
-        <th>209GK3</th>
-        <th>-</th>
-    </tr>
-    <tr>
-        <th>120004006</th>
-        <th>-</th>
-        <th>-</th>
-        <th>2KFP2N</th>
-        <th>-</th>
-        <th>E42JGM2</th>
-        <th>-</th>
-    </tr>
-    <tr>
-        <th>120004007</th>
-        <th>2KGP2N</th>
-        <th>-</th>
-        <th>-</th>
-        <th>-</th>
-        <th>GLP2MG</th>
-        <th>-</th>
-    </tr>
-    <tr>
-        <th>120004008</th>
-        <th>-</th>
-        <th>-</th>
-        <th>PEN2R4</th>
-        <th>-</th>
-        <th>2FP2LD</th>
-        <th>-</th>
-    </tr>
-    <tr>
-        <th>120004009</th>
-        <th>2GLFP2</th>
-        <th>-</th>
-        <th>-</th>
-        <th>-</th>
-        <th>GNMEDN</th>
-        <th>-</th>
-    </tr>
-    <tr>
-        <th>120002010</th>
-        <th>-</th>
-        <th>-</th>
-        <th>BGJNSG</th>
-        <th>-</th>
-        <th>FDKRTN</th>
-        <th>-</th>
-    </tr>-->
   </table>
   <ion-button class="endbuttons" color="warning" size="default" fill="solid" (click)="goBack()">
       BACK

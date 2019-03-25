@@ -9,8 +9,22 @@ import { NavController } from '@ionic/angular';
 export class SummaryPage implements OnInit {
 
   constructor(public navCtrl: NavController) { }
+  from_picker_date=null;
+  from_text_date=null;
+  to_picker_date=null;
+  to_text_date=null;
 
   ngOnInit() {
+    //this.to_picker_date=this.to_text_date=today's date from server
+    this.updatePage();
+  }
+  dateChanged(){
+    this.from_text_date=this.from_picker_date.toString();
+    this.to_text_date=this.to_picker_date.toString();
+    this.updatePage();
+  }
+  updatePage(){
+    
   }
 
   viewButtons(){
@@ -19,11 +33,6 @@ export class SummaryPage implements OnInit {
 
   goBack(){
     this.navCtrl.navigateBack(['buttons']);
-  }
-
-  updateMenu(){
-    //update menu to db
-    this.navCtrl.navigateRoot(['buttons']);
   }
 
   createMenu(){

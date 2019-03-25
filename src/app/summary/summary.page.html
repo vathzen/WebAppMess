@@ -27,15 +27,47 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-toolbar>
+      <mat-form-field>
+          <input matInput [matDatepicker]="fromDatepicker" [(ngModel)]="from_picker_date" (dateChange)="dateChanged()" placeholder="From">
+          <mat-datepicker-toggle matSuffix [for]="fromDatepicker">
+              <div class="calenderico" matDatepickerToggleIcon></div>
+          </mat-datepicker-toggle>
+          <mat-datepicker #fromDatepicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput [matDatepicker]="toDatepicker" [(ngModel)]="to_picker_date" (dateChange)="dateChanged()" placeholder="To">
+          <mat-datepicker-toggle matSuffix [for]="toDatepicker">
+              <div class="calenderico" matDatepickerToggleIcon></div>
+          </mat-datepicker-toggle>
+          <mat-datepicker #toDatepicker></mat-datepicker>
+        </mat-form-field>
+  </ion-toolbar>
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-label>
-            Table for given month
-        </ion-label>
+       <ion-card class="studentcard">
+        <ion-card-header>Student-wise Gross</ion-card-header>
+        <ion-card-content>
+        <table>
+          <tr>
+              <th>Register Number</th>
+              <th>Gross</th>
+            </tr>
+            <tr>
+              <th>120004213</th>
+              <th>5000</th>
+            </tr>
+            <tr>
+              <th>120004124</th>
+              <th>4000</th>
+            </tr>
+        </table>
+      </ion-card-content>
+      </ion-card>
       </ion-col>
       <ion-col>
-            <ion-card>
+            <ion-card class="itemcard">
               <ion-card-header>Item-wise Gross</ion-card-header>
               <ion-card-content>
                   <ion-list>
