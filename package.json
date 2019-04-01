@@ -13,6 +13,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "7.3.6",
+    "@angular/compiler-cli": "~7.2.2",
     "@angular/animations": "^7.2.10",
     "@angular/cdk": "^7.3.5",
     "@angular/common": "^7.2.2",
@@ -48,9 +50,7 @@
     "@angular-devkit/build-angular": "~0.13.0",
     "@angular-devkit/core": "~7.2.3",
     "@angular-devkit/schematics": "~7.2.3",
-    "@angular/cli": "7.3.6",
     "@angular/compiler": "~7.2.2",
-    "@angular/compiler-cli": "~7.2.2",
     "@angular/language-service": "~7.2.2",
     "@ionic/angular-toolkit": "~1.4.0",
     "@types/jasmine": "~2.8.8",
