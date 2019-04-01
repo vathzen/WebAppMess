@@ -14,9 +14,9 @@ export class OrdersPage implements OnInit {
   private user={username:'', pswrd:'', contractor:'', messname:''}; //idk whr to use these yet
   //EVERYTHING IS WRT THIS USER, USE CONTEXT OF this.user.username for db queries
   public orders=[
-    {mealname:'Breakfast', item1:'Veg Sandwich', item1_count:56, item2:'', item2_count:''},
-    {mealname:'Lunch', item1:'Noodles', item1_count:16, item2:'Dosa', item2_count:'23'},
-    {mealname:'Dinner', item1:'Paneer Fried Rice', item1_count:22, item2:'', item2_count:''}
+    {mealname:'Breakfast', item1:'Veg Sandwich', item1_count:56, item2:'', item2_count:null},
+    {mealname:'Lunch', item1:'Noodles', item1_count:16, item2:'Dosa', item2_count:23},
+    {mealname:'Dinner', item1:'Paneer Fried Rice', item1_count:22, item2:'', item2_count:null}
   ];
   public colspan=[];
   public colhead=[];
@@ -40,8 +40,8 @@ export class OrdersPage implements OnInit {
     this.orders.forEach(item => {//each iteration for each meal FOR GIVEN DATE
       item.item1='New meal1!';//get item 1 from db
       item.item1_count=50;//get item 1 count from db
-      item.item2='';//get item 2 from db (EVEN IF NULL)
-      item.item2_count=null;//get item 2 count from db (EVEN IF NULL)
+      item.item2='New meal2!';//get item 2 from db (EVEN IF NULL)
+      item.item2_count=40;//get item 2 count from db (EVEN IF NULL)
     });
   }
 
