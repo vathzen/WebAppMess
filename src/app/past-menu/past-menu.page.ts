@@ -29,9 +29,9 @@ export class PastMenuPage implements OnInit {
 
   updatePage(){
     this.menu.forEach(entry => {//get from db even if null
-      entry.item1="Item!";
+      entry.item1='Item!';
       entry.item1_cost=20;
-      entry.item2="Item!";
+      entry.item2='Item!';
       entry.item2_cost=20;
     });
   }

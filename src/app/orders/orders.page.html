@@ -56,14 +56,17 @@
   </ion-label>
 
   <table>
-  <tr>
+    <tr>
       <th rowspan="2">RegNum</th>
-      <th [attr.colspan]="colspan[0]">Breakfast</th> 
-      <th [attr.colspan]="colspan[1]">Lunch</th> 
-      <th [attr.colspan]="colspan[2]">Dinner</th> 
+      <ng-container *ngFor="let entry of orders">
+      <th [attr.colspan]="entry.span" *ngIf="entry.item1||entry.item2">{{entry.mealname}}</th>
+      </ng-container>
     </tr>
     <tr> 
-        <th *ngFor="let head of colhead">{{head}}</th>  
+        <ng-container *ngFor="let entry of orders">
+          <th *ngIf="entry.item1">{{entry.item1}}</th>
+          <th *ngIf="entry.item2">{{entry.item2}}</th>
+        </ng-container>
     </tr>
     <tr *ngFor="let row of codes">
         <td>{{row.regnum}}</td>

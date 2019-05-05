@@ -51,16 +51,14 @@
         <ion-card-content>
         <table>
           <tr>
+              <th>S.no</th>
               <th>Register Number</th>
               <th>Gross</th>
             </tr>
-            <tr>
-              <th>120004213</th>
-              <th>5000</th>
-            </tr>
-            <tr>
-              <th>120004124</th>
-              <th>4000</th>
+            <tr *ngFor="let item of students">
+              <th>{{item.sno}}</th>
+              <th>{{item.regnum}}</th>
+              <th>{{item.gross}}</th>
             </tr>
         </table>
       </ion-card-content>
@@ -75,20 +73,12 @@
                         <ion-label>   Item</ion-label>
                         <ion-note>Gross</ion-note>
                       </ion-item>
-                    <ion-item lines="inset">
-                      <ion-label>1. Gobi Manchurian</ion-label>
-                      <ion-note>450</ion-note>
+                    <ion-item *ngFor="let item of items" lines="inset">
+                      <ion-label>{{item.sno}}. {{item.itemname}}</ion-label>
+                      <ion-note>{{item.gross}}</ion-note>
                     </ion-item>
                     <ion-item lines="inset">
-                      <ion-label>2. Gobi Manchurian</ion-label>
-                      <ion-note>450</ion-note>
-                    </ion-item>
-                    <ion-item lines="inset">
-                      <ion-label>3. Gobi Manchurian</ion-label>
-                      <ion-note>450</ion-note>
-                    </ion-item>
-                    <ion-item lines="inset">
-                      <ion-note class="total" slot="end">Total:        Rs.1300</ion-note>
+                      <ion-note class="total" slot="end">Total:        Rs. {{itemwise_total}}</ion-note>
                     </ion-item>
                   </ion-list>
               </ion-card-content>

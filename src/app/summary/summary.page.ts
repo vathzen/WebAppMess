@@ -13,6 +13,16 @@ export class SummaryPage implements OnInit {
   from_text_date=null;
   to_picker_date=null;
   to_text_date=null;
+  public items=[
+    {sno:1, itemname:'item1', gross:20},
+    {sno:2, itemname:'item2', gross:30},
+  ];
+  public students=[
+    {sno:1, regnum:'120004213', gross:2000},
+    {sno:2, regnum:'120004214', gross:3000},
+  ];
+  itemwise_total= 50;
+  studentwise_total= 5000;
 
   ngOnInit() {
     //this.to_picker_date=this.to_text_date=today's date from server

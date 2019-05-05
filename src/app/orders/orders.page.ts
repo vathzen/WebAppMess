@@ -14,12 +14,11 @@ export class OrdersPage implements OnInit {
   private user={username:'', pswrd:'', contractor:'', messname:''}; //idk whr to use these yet
   //EVERYTHING IS WRT THIS USER, USE CONTEXT OF this.user.username for db queries
   public orders=[
-    {mealname:'Breakfast', item1:'Veg Sandwich', item1_count:56, item2:'', item2_count:null},
-    {mealname:'Lunch', item1:'Noodles', item1_count:16, item2:'Dosa', item2_count:23},
-    {mealname:'Dinner', item1:'Paneer Fried Rice', item1_count:22, item2:'', item2_count:null}
+    {mealname:'Breakfast', item1:null, item1_count:null, item2:null, item2_count:null, span:0},
+    {mealname:'Lunch', item1:null, item1_count:null, item2:null, item2_count:null, span:0},
+    {mealname:'Dinner', item1:null, item1_count:null, item2:null, item2_count:null, span:0}
   ];
-  public colspan=[];
-  public colhead=[];
+  nullIndices = [];
   public codes=[]; //list of elements {regnum:'reg_num-here',code_array:code_array_here}
 
   ngOnInit(){
@@ -37,44 +36,44 @@ export class OrdersPage implements OnInit {
   }
 
   updateTotal(){
+    var orders = ['Dosa',30,null,null,null,null,null,null,'Noodles',50,'Fried Rice',50];
+    var orders_count = [33,null,null,null,55,66];
+
+    var i=0;
+    this.nullIndices.splice(0,this.nullIndices.length);
     this.orders.forEach(item => {//each iteration for each meal FOR GIVEN DATE
-      item.item1='New meal1!';//get item 1 from db
-      item.item1_count=50;//get item 1 count from db
-      item.item2='New meal2!';//get item 2 from db (EVEN IF NULL)
-      item.item2_count=40;//get item 2 count from db (EVEN IF NULL)
+      if(orders[i]!=null){
+        item.item1=orders[i].toString();
+        item.item1_count=Number(orders_count[i/2]);
+        item.span++;
+      }
+      else{
+        this.nullIndices.push(i/2);
+      }
+      if(orders[i+2]!=null){
+        item.item2=orders[i+2].toString();
+        item.item2_count=Number(orders_count[(i+2)/2]);
+        item.span++;
+      }
+      else{
+        this.nullIndices.push((i+2)/2);
+      }
+      i+=4;
     });
   }
 
   updateTable(){//get new menu dictionary
-    //clear old, append to new colhead and colspan
-    this.colhead.splice(0,this.colhead.length);
-    this.colspan.splice(0,this.colspan.length);
-    this.orders.forEach(entry => {
-      var colspan = 0;
-      if(entry.item1!=''){
-        colspan+=1;
-        this.colhead.push(entry.item1);
-      }
-      if(entry.item2!=''){
-        colspan+=1;
-        this.colhead.push(entry.item2);
-      }
-      this.colspan.push(colspan);
-    });
     //Heading over, body starts
     this.codes.splice(0,this.codes.length); //delete prev day codes
     //get from db and push as {regnum:'regnum from db', code_array:[code1,code2,..code6] from db}
     //loop from here for every reg num
     var tempcode = ["code1",null,null,null,"code2",null];
-    var del_index: number,comp = 0;
-    for (let i = 0; i < this.colspan.length; i++) {
-      del_index=((2*i)+1)-comp;
-      if(this.colspan[i]==1){
-        comp+=1;
-        tempcode.splice(del_index,1);
-      }
-    }
-    this.codes.push({regnum:'120005000',code_array:tempcode}) //loop to here for every reg num
+    var x = 0;
+    this.nullIndices.forEach(element => {
+      tempcode.splice(element-x,1);
+      x++;
+    });
+    this.codes.push({regnum:'120005000',code_array:tempcode})
   }
 
   viewButtons(){
