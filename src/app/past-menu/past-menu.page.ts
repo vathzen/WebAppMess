@@ -10,29 +10,27 @@ export class PastMenuPage implements OnInit {
 
   constructor(public navCtrl:NavController) { }
   picker_date=null;
-  text_date=null;
   public menu=[
-    {mealname:'Breakfast', item1:'', item1_cost:null, item2:'', item2_cost:null},
-    {mealname:'Lunch', item1:'', item1_cost:null, item2:'', item2_cost:null},
-    {mealname:'Dinner', item1:'', item1_count:null, item2:'', item2_count:null}
+    {mealname:'Breakfast', item1:null, item1_cost:null, item2:null, item2_cost:null},
+    {mealname:'Lunch', item1:null, item1_cost:null, item2:null, item2_cost:null},
+    {mealname:'Dinner', item1:null, item1_count:null, item2:null, item2_count:null}
   ];
 
   ngOnInit() {
-    //this.picker_date=this.text_date=today's date from server
-    this.updatePage();
-  }
-
-  dateChanged(){
-    this.text_date=this.picker_date.toString();
+    //this.picker_date=today's date from server
     this.updatePage();
   }
 
   updatePage(){
-    this.menu.forEach(entry => {//get from db even if null
-      entry.item1='Item!';
-      entry.item1_cost=20;
-      entry.item2='Item!';
-      entry.item2_cost=20;
+    //use picker_date as context
+    var menu = ['Dosa',30,null,null,null,null,null,null,'Noodles',50,'Fried Rice',50];//assuming we get this
+    var i=0;
+    this.menu.forEach(entry => {
+      entry.item1=menu[i];
+      entry.item1_cost=menu[i+1];
+      entry.item2=menu[i+2];
+      entry.item2_cost=menu[i+3];
+      i+=4;
     });
   }
 

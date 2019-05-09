@@ -8,6 +8,7 @@ import { NavController } from '@ionic/angular';
 export class ButtonsPage implements OnInit {
 
   constructor(public navCtrl: NavController) { }
+  private user={username:'', pswrd:'', contractor:'', messname:''}; //idk whr to use these yet
 
   ngOnInit() {
   }

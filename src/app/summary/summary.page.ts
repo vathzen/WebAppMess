@@ -10,9 +10,7 @@ export class SummaryPage implements OnInit {
 
   constructor(public navCtrl: NavController) { }
   from_picker_date=null;
-  from_text_date=null;
   to_picker_date=null;
-  to_text_date=null;
   public items=[
     {sno:1, itemname:'item1', gross:20},
     {sno:2, itemname:'item2', gross:30},
@@ -28,13 +26,11 @@ export class SummaryPage implements OnInit {
     //this.to_picker_date=this.to_text_date=today's date from server
     this.updatePage();
   }
-  dateChanged(){
-    this.from_text_date=this.from_picker_date.toString();
-    this.to_text_date=this.to_picker_date.toString();
-    this.updatePage();
-  }
+
   updatePage(){
-    
+    if(this.from_picker_date&&this.to_picker_date){
+      //do updation
+    }
   }
 
   viewButtons(){

@@ -36,7 +36,7 @@
               <ion-col>
                <div class="calendar">
                     <mat-form-field>
-                        <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="picker_date" (dateChange)="dateChanged()" placeholder="Select a Date">
+                        <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="picker_date" (dateChange)="updatePage()" placeholder="Select a Date">
                         <mat-datepicker-toggle matSuffix [for]="myDatepicker">
                             <div class="calenderico" matDatepickerToggleIcon></div>
                         </mat-datepicker-toggle>

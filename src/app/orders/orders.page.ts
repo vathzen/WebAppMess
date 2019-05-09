@@ -11,7 +11,6 @@ export class OrdersPage implements OnInit {
   constructor(public navCtrl: NavController) { }
   picker_date=null;
   text_date=null;
-  private user={username:'', pswrd:'', contractor:'', messname:''}; //idk whr to use these yet
   //EVERYTHING IS WRT THIS USER, USE CONTEXT OF this.user.username for db queries
   public orders=[
     {mealname:'Breakfast', item1:null, item1_count:null, item2:null, item2_count:null, span:0},
@@ -66,14 +65,24 @@ export class OrdersPage implements OnInit {
     //Heading over, body starts
     this.codes.splice(0,this.codes.length); //delete prev day codes
     //get from db and push as {regnum:'regnum from db', code_array:[code1,code2,..code6] from db}
-    //loop from here for every reg num
-    var tempcode = ["code1",null,null,null,"code2",null];
-    var x = 0;
-    this.nullIndices.forEach(element => {
-      tempcode.splice(element-x,1);
-      x++;
-    });
-    this.codes.push({regnum:'120005000',code_array:tempcode})
+    
+    var tempcodes = [
+    ["120005000","code1",null,null,null,"code2",null],
+    ["120005001",null,null,null,null,null,"code2"],
+    ["120005002","code1",null,null,null,"code2",null],
+    ["120005003",null,null,null,null,"code2",null],
+    ["120005004",null,null,null,null,null,"code2"]
+  ];
+    tempcodes.forEach(tempcode => {
+      var regnum = tempcode[0];
+      tempcode.splice(0,1);
+      var x = 0;
+      this.nullIndices.forEach(element => {
+        tempcode.splice(element-x,1);
+        x++;
+      });
+    this.codes.push({regnum:regnum,code_array:tempcode})
+    }); 
   }
 
   viewButtons(){
