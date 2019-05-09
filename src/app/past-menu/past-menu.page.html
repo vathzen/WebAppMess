@@ -36,7 +36,7 @@
               <ion-col>
                <div class="calendar">
                     <mat-form-field>
-                        <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="picker_date" (dateChange)="dateChanged()" placeholder="Select a Date">
+                        <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="picker_date" (dateChange)="updatePage()" placeholder="Select a Date">
                         <mat-datepicker-toggle matSuffix [for]="myDatepicker">
                             <div class="calenderico" matDatepickerToggleIcon></div>
                         </mat-datepicker-toggle>
@@ -51,18 +51,18 @@
                             </ion-item>
                             <ion-item lines="none">
                                 <ion-item class="firstitem" lines="inset">
-                                    <ion-label position="floating">{{entry.item1}}</ion-label>
+                                    <ion-label>{{entry.item1}}</ion-label>
                                 </ion-item>
                                 <ion-item slot = "end" lines="inset">
-                                    <ion-label position="floating">{{entry.item1_cost}}</ion-label>
+                                    <ion-label>{{entry.item1_cost}}</ion-label>
                                 </ion-item>
                             </ion-item>
                             <ion-item lines="none">
                                 <ion-item class="firstitem" lines="inset">
-                                    <ion-label position="floating">{{entry.item2}}</ion-label>
+                                    <ion-label>{{entry.item2}}</ion-label>
                                 </ion-item>
                                 <ion-item slot = "end" lines="inset"> 
-                                    <ion-label position="floating">{{entry.item1_cost}}</ion-label>
+                                    <ion-label>{{entry.item2_cost}}</ion-label>
                                 </ion-item>
                             </ion-item>
                         </ion-list>
