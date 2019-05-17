@@ -51,7 +51,7 @@ export class FillOrderPage implements OnInit {
       menu.push(entry.item1,entry.item1_cost,entry.item2,entry.item2_cost);
     });
     console.log(menu); //Use var menu to send
-
+    
     const loading = await this.loadCtrl.create({
       message: 'Please wait'
     });
