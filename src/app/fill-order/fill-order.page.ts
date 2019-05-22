@@ -52,6 +52,12 @@ export class FillOrderPage implements OnInit {
     //update menu to db
     var menu=[];
     this.menu.forEach(entry => {
+      if(entry.item1 == null){
+          entry.item1 = "null";
+      }
+      if(entry.item2 == null){
+          entry.item2 = "null";
+      }
       menu.push(entry.item1,entry.item1_cost,entry.item2,entry.item2_cost);
     });
     var menuObj = new Menu(menu);
