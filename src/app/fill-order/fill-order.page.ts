@@ -1,21 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController } from '@ionic/angular';
-
+import { RestService } from '../services/rest.service';
+import { Response,Menu } from '../services/classes';
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-fill-order',
   templateUrl: './fill-order.page.html',
   styleUrls: ['./fill-order.page.scss'],
 })
+
 export class FillOrderPage implements OnInit {
   date=null;
   text_date=null;
+  authStatus = new Response();
   public menu=[
     {mealname:'Breakfast', item1:null, item1_cost:null, item2:null, item2_cost:null},
     {mealname:'Lunch', item1:null, item1_cost:null, item2:null, item2_cost:null},
     {mealname:'Dinner', item1:null, item1_cost:null, item2:null, item2_cost:null}
   ];
 
-  constructor(public navCtrl: NavController, private loadCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, private loadCtrl: LoadingController,private toastController: ToastController,private restService: RestService) {
   }
 
   ngOnInit() {
@@ -48,27 +52,51 @@ export class FillOrderPage implements OnInit {
     //update menu to db
     var menu=[];
     this.menu.forEach(entry => {
+      if(entry.item1 == null){
+          entry.item1 = "null";
+      }
+      if(entry.item2 == null){
+          entry.item2 = "null";
+      }
       menu.push(entry.item1,entry.item1_cost,entry.item2,entry.item2_cost);
     });
-    console.log(menu); //Use var menu to send
-
+    var menuObj = new Menu(menu);
     const loading = await this.loadCtrl.create({
       message: 'Please wait'
     });
+    const toastSuc = await this.toastController.create({
+        message: 'Your settings have been saved.',
+        duration: 2000
+    });
+    const toastFai = await this.toastController.create({
+        message: 'Please Try again later.',
+        duration: 2000
+    });
     await loading.present();
-      if(true){
-        loading.dismiss();
-        //show failure alert
-      }
-    else{
-      loading.dismiss();
-      this.updatePage();
-      //show success alert
-     }
+    this.restService.putMenu(menuObj).subscribe(
+        (response) => {
+            this.authStatus = response;
+            if(this.authStatus.Status == "OK"){
+                console.log("Updated!");
+                loading.dismiss();
+                toastSuc.present();
+                this.updatePage();
+                //we need to show some sort of acknowledgement that menu has been saved!
+            }else{
+                console.log("Not updated!");
+                loading.dismiss();
+                toastFai.present();
+                //similiarly here
+            }
+        },
+        err => {
+            console.log(err);
+        }
+    )
   }
 
-  createMenu(){
-    this.navCtrl.navigateRoot(['fill-order']);
+createMenu(){
+  this.navCtrl.navigateRoot(['fill-order']);
 }
 
 viewOrders(){
