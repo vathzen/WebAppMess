@@ -2,22 +2,7 @@
   <ion-toolbar>
     <ion-item lines="none">
         <div class="chefico" (click)="viewButtons()"></div>
-        <ion-button color="primary" size="default" fill="solid" (click)="createMenu()">
-            <ion-ripple-effect></ion-ripple-effect>
-            Create New Menu
-        </ion-button>
-        <ion-button color="primary" size="default" fill="solid" (click)="viewOrders()">
-            <ion-ripple-effect></ion-ripple-effect>
-            View Orders
-        </ion-button>
-        <ion-button color="primary" size="default" fill="solid" (click)="viewMenu()">
-            <ion-ripple-effect></ion-ripple-effect>
-            View Past Menu
-        </ion-button>
-        <ion-button color="primary" size="default" fill="solid" (click)="viewMonthlySummary()">
-            <ion-ripple-effect></ion-ripple-effect>
-            Monthly Summary
-        </ion-button>
+        <div class="head">SASTRA MESS</div>
         <ion-button slot="end" color="warning" size="default" fill="solid" (click)="logout()">
             <ion-ripple-effect></ion-ripple-effect>
             Log Out
@@ -27,5 +12,50 @@
 </ion-header>
 
 <ion-content padding>
-    Welcome!
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-card (click)="createMenu()">
+            <ion-card-header>
+            Create New Menu
+            </ion-card-header>
+            <ion-card-content>
+              <div class="iconpos createicon"></div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card (click)="viewOrders()">
+            <ion-card-header>
+              View Orders
+              </ion-card-header>
+            <ion-card-content>
+              <div class="iconpos ordersicon"></div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-card (click)="viewMenu()">
+            <ion-card-header>
+              View Past Menu
+            </ion-card-header>
+            <ion-card-content>
+              <div class="iconpos pastordersicon"></div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card (click)="viewMonthlySummary()">
+            <ion-card-header>
+              Monthly Summary
+            </ion-card-header>
+            <ion-card-content>
+              <div class="iconpos summaryicon"></div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 </ion-content>

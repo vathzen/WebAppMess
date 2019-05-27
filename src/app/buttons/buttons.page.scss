@@ -5,7 +5,63 @@
     margin-inline-end: 20px;
     cursor: pointer;
 }
+.head{
+    color: rgb(56, 128, 255);
+    font-size: 26px;
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 ion-content{
     font-size: 40px;
     text-align: center;
+}
+ion-grid{
+    height: 100%;
+}
+ion-row{
+    height: 50%;
+}
+ion-card{
+    height: 90%;
+    width: 90%;
+    padding-top: 15%;
+    margin:6%;
+    font-size: 28px;
+    background: rgb(56, 128, 255);
+    transition-duration: 200ms;
+    cursor: pointer;
+}
+ion-card:hover{
+    background: rgb(255, 209, 56);
+    transform: scale(1.1);
+    transition-duration: 200ms;
+}
+ion-card:active{
+    background: black;
+    transition-duration: 100ms;
+}
+ion-card-header{
+    color: #fff;
+}
+.iconpos{
+    width: 65px;
+    height: 65px;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.createicon{
+    background: hsla(0, 0%, 100%, 0) url('../../assets/images/keyboard.png') no-repeat center center / cover;
+}
+.ordersicon{
+    background: hsla(0, 0%, 100%, 0) url('../../assets/images/orders.png') no-repeat center center / cover;
+}
+.pastordersicon{
+    background: hsla(0, 0%, 100%, 0) url('../../assets/images/pastorders.png') no-repeat center center / cover;
+}
+.summaryicon{
+    background: hsla(0, 0%, 100%, 0) url('../../assets/images/summary.png') no-repeat center center / cover;
 }
