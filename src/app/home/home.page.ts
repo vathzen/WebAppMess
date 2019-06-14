@@ -8,14 +8,15 @@ import { NavController } from '@ionic/angular';
 })
 export class HomePage{
     username = "";
-    password = "";
+    password = null;
 
     constructor(private navCtrl: NavController) {}
 
     login(){
         if(this.username == "admin" && this.password == "admin"){
-            this.navCtrl.navigateRoot(['buttons']);
-        }else{
+            this.navCtrl.navigateForward(['buttons']);
+        }
+        else{
             console.error("Wrong Username Password");
         }
     }

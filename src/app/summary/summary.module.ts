@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { MaterialModule } from '../material.module';
 
 import { SummaryPage } from './summary.page';
+import { ToolbarComponentModule } from '../components/toolbar/toolbar.component.module';
 
 const routes: Routes = [
   {
@@ -22,8 +23,9 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     MaterialModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ToolbarComponentModule
   ],
-  declarations: [SummaryPage]
+  declarations: [SummaryPage],
 })
 export class SummaryPageModule {}

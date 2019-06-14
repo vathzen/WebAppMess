@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'fill-order', loadChildren: './fill-order/fill-order.module#FillOrderPageModule' },
   { path: 'past-menu', loadChildren: './past-menu/past-menu.module#PastMenuPageModule' },
   { path: 'orders', loadChildren: './orders/orders.module#OrdersPageModule' },
-  { path: 'summary', loadChildren: './summary/summary.module#SummaryPageModule' }
+  { path: 'summary', loadChildren: './summary/summary.module#SummaryPageModule' },  { path: 'order-history', loadChildren: './order-history/order-history.module#OrderHistoryPageModule' }
+
 ];
 
 @NgModule({

@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-item lines="none">
         <div class="chefico" (click)="viewButtons()"></div>
-        <div class="head">SASTRA MESS</div>
+        <div class="head">MEGA HOSTEL MESS</div>
         <ion-button slot="end" color="warning" size="default" fill="solid" (click)="logout()">
             <ion-ripple-effect></ion-ripple-effect>
             Log Out
@@ -17,7 +17,7 @@
         <ion-col>
           <ion-card (click)="createMenu()">
             <ion-card-header>
-            Create New Menu
+            Create Menu
             </ion-card-header>
             <ion-card-content>
               <div class="iconpos createicon"></div>
@@ -34,15 +34,25 @@
             </ion-card-content>
           </ion-card>
         </ion-col>
+        <ion-col>
+          <ion-card (click)="viewOrderHistory()">
+            <ion-card-header>
+              Order History
+              </ion-card-header>
+            <ion-card-content>
+              <div class="iconpos pastordersicon"></div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <ion-card (click)="viewMenu()">
             <ion-card-header>
-              View Past Menu
+              View Old Menu
             </ion-card-header>
             <ion-card-content>
-              <div class="iconpos pastordersicon"></div>
+              <div class="iconpos pastmenuicon"></div>
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -53,6 +63,16 @@
             </ion-card-header>
             <ion-card-content>
               <div class="iconpos summaryicon"></div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              Unknown
+              </ion-card-header>
+            <ion-card-content>
+              <div class="iconpos">X</div>
             </ion-card-content>
           </ion-card>
         </ion-col>

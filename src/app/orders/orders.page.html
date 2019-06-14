@@ -1,29 +1,5 @@
 <ion-header>
-  <ion-toolbar>
-      <ion-item lines="none">
-          <div class="chefico" (click)="viewButtons()"></div>
-          <ion-button color="primary" size="default" fill="solid" (click)="createMenu()">
-              <ion-ripple-effect></ion-ripple-effect>
-              Create New Menu
-          </ion-button>
-          <ion-button color="primary" size="default" fill="solid" (click)="viewOrders()">
-              <ion-ripple-effect></ion-ripple-effect>
-              View Orders
-          </ion-button>
-          <ion-button color="primary" size="default" fill="solid" (click)="viewMenu()">
-              <ion-ripple-effect></ion-ripple-effect>
-              View Past Menu
-          </ion-button>
-          <ion-button color="primary" size="default" fill="solid" (click)="viewMonthlySummary()">
-            <ion-ripple-effect></ion-ripple-effect>
-            Monthly Summary
-        </ion-button>
-          <ion-button slot="end" color="warning" size="default" fill="solid" (click)="logout()">
-              <ion-ripple-effect></ion-ripple-effect>
-              Log Out
-          </ion-button>
-      </ion-item>
-  </ion-toolbar>
+  <app-toolbar></app-toolbar>
 </ion-header>
 
 <ion-content padding>
@@ -73,7 +49,7 @@
         <td *ngFor="let code of row.code_array">{{code}}</td> 
     </tr>
   </table>
-  <ion-button class="endbuttons" color="warning" size="default" fill="solid" (click)="goBack()">
+  <ion-button class="endbuttons" color="warning" size="default" fill="solid" (click)="viewButtons()">
       BACK
   </ion-button>
   <ion-button class="endbuttons" color="primary" size="default" fill="solid">

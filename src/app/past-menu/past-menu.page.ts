@@ -34,32 +34,4 @@ export class PastMenuPage implements OnInit {
     });
   }
 
-  viewButtons(){
-    this.navCtrl.navigateRoot(['buttons']);
-  }
-
-  goBack(){
-    this.navCtrl.navigateBack(['buttons']);
-  }
-
-  createMenu(){
-    this.navCtrl.navigateRoot(['fill-order']);
-}
-
-viewOrders(){
-  this.navCtrl.navigateRoot(['orders']);
-}
-
-viewMenu(){
-  this.navCtrl.navigateRoot(['past-menu']);
-}
-
-viewMonthlySummary(){
-  this.navCtrl.navigateRoot(['summary']);
-}
-
-  logout(){
-    this.navCtrl.navigateRoot(['home']);
-  }
-
 }

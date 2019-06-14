@@ -1,29 +1,5 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-item lines="none">
-      <div class="chefico" (click)="viewButtons()"></div>
-      <ion-button color="primary" size="default" fill="solid" (click)="createMenu()">
-          <ion-ripple-effect></ion-ripple-effect>
-          Create New Menu
-      </ion-button>
-      <ion-button color="primary" size="default" fill="solid" (click)="viewOrders()">
-          <ion-ripple-effect></ion-ripple-effect>
-          View Orders
-      </ion-button>
-      <ion-button color="primary" size="default" fill="solid" (click)="viewMenu()">
-          <ion-ripple-effect></ion-ripple-effect>
-          View Past Menu
-      </ion-button>
-      <ion-button color="primary" size="default" fill="solid" (click)="viewMonthlySummary()">
-          <ion-ripple-effect></ion-ripple-effect>
-          Monthly Summary
-      </ion-button>
-      <ion-button slot="end" color="warning" size="default" fill="solid" (click)="logout()">
-          <ion-ripple-effect></ion-ripple-effect>
-          Log Out
-      </ion-button>
-  </ion-item>
-</ion-toolbar>
+  <app-toolbar></app-toolbar>
 </ion-header>
 
 <ion-content padding>
@@ -41,40 +17,50 @@
               <div class="calenderico" matDatepickerToggleIcon></div>
           </mat-datepicker-toggle>
           <mat-datepicker #toDatepicker></mat-datepicker>
-        </mat-form-field>
+      </mat-form-field>
   </ion-toolbar>
   <ion-grid>
     <ion-row>
       <ion-col>
-       <ion-card class="studentcard">
+        <div class="searchbar">
+          <ion-searchbar [(ngModel)]="searchnumber" (ionChange)="filterRegnum()" color="light" placeholder="Register Number" type="number"></ion-searchbar>
+        </div>
+       <ion-card class="card studentcard">
         <ion-card-header>Student-wise Gross</ion-card-header>
         <ion-card-content>
         <table>
           <tr>
-              <th>S.no</th>
-              <th>Register Number</th>
-              <th>Gross</th>
-            </tr>
-            <tr *ngFor="let item of students">
-              <th>{{item.sno}}</th>
-              <th>{{item.regnum}}</th>
-              <th>{{item.gross}}</th>
-            </tr>
+            <th>S.no</th>
+            <th>Register Number</th>
+            <th>Gross</th>
+          </tr>
+          <tr *ngFor="let item of students">
+            <th>{{item.sno}}</th>
+            <th>{{item.regnum}}</th>
+            <th>{{item.gross}}</th>
+          </tr>
+          <tr>
+            <th colspan="2">Total:</th>
+            <th>{{studentwise_total}}</th>
+          </tr>
         </table>
       </ion-card-content>
       </ion-card>
       </ion-col>
       <ion-col>
-            <ion-card class="itemcard">
+          <div class="searchbar">
+              <ion-searchbar [(ngModel)]="searchitem" (ionChange)="filterItems()" color="light" placeholder="Item"></ion-searchbar>
+            </div>
+            <ion-card class="card itemcard">
               <ion-card-header>Item-wise Gross</ion-card-header>
               <ion-card-content>
                   <ion-list>
                     <ion-item lines="inset">
-                        <ion-label>   Item</ion-label>
+                        <ion-label>       Item</ion-label>
                         <ion-note>Gross</ion-note>
                       </ion-item>
                     <ion-item *ngFor="let item of items" lines="inset">
-                      <ion-label>{{item.sno}}. {{item.itemname}}</ion-label>
+                      <ion-label>{{item.sno}}.     {{item.itemname}}</ion-label>
                       <ion-note>{{item.gross}}</ion-note>
                     </ion-item>
                     <ion-item lines="inset">

@@ -10,3 +10,22 @@
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+ion-card{
+    border-top: 2px solid rgb(0, 162, 255);
+}
+ion-item{
+    --highlight-color-valid:rgb(0, 162, 255);
+}
+.chefico{
+    width: 38.6px;
+    height: 39.6px;
+    background: #fff url('./assets/images/chefico.png') no-repeat center center / cover;
+    margin-inline-end: 20px;
+    cursor: pointer;
+}
+.calenderico{
+    width: 24px;
+    height: 24px;
+    background: #fff url('./assets/images/calendarico.png') no-repeat center center / cover;
+}

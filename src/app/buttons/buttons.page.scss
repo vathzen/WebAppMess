@@ -1,10 +1,3 @@
-.chefico{
-    width: 38.6px;
-    height: 39.6px;
-    background: #fff url('../../assets/images/chefico.png') no-repeat center center / cover;
-    margin-inline-end: 20px;
-    cursor: pointer;
-}
 .head{
     color: rgb(56, 128, 255);
     font-size: 26px;
@@ -25,11 +18,12 @@ ion-row{
 }
 ion-card{
     height: 90%;
-    width: 90%;
-    padding-top: 15%;
-    margin:6%;
+    width: 70%;
+    padding-top: 12%;
+    margin-left:15%;
     font-size: 28px;
     background: rgb(56, 128, 255);
+    border-top: 0px;
     transition-duration: 200ms;
     cursor: pointer;
 }
@@ -61,6 +55,9 @@ ion-card-header{
 }
 .pastordersicon{
     background: hsla(0, 0%, 100%, 0) url('../../assets/images/pastorders.png') no-repeat center center / cover;
+}
+.pastmenuicon{
+    background: hsla(0, 0%, 100%, 0) url('../../assets/images/pastmenu.png') no-repeat center center / cover;
 }
 .summaryicon{
     background: hsla(0, 0%, 100%, 0) url('../../assets/images/summary.png') no-repeat center center / cover;

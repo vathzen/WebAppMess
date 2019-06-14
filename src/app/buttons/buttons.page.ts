@@ -18,16 +18,21 @@ export class ButtonsPage implements OnInit {
   }
   
   createMenu(){
-      this.navCtrl.navigateRoot(['fill-order']);
+      this.navCtrl.navigateForward(['fill-order']);
   }
 
   viewOrders(){
     this.navCtrl.navigateForward(['orders']);
   }
 
+  viewOrderHistory(){
+    this.navCtrl.navigateForward(['order-history']);
+  }
+
   viewMenu(){
     this.navCtrl.navigateForward(['past-menu']);
   }
+  
   viewMonthlySummary(){
     this.navCtrl.navigateForward(['summary']);
   }

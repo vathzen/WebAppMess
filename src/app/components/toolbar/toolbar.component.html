@@ -1,0 +1,29 @@
+<ion-toolbar>
+    <ion-item lines="none">
+        <div class="chefico" (click)="viewButtons()"></div>
+        <ion-button color="primary" size="default" fill="solid" (click)="createMenu()">
+            <ion-ripple-effect></ion-ripple-effect>
+            Create Menu
+        </ion-button>
+        <ion-button color="primary" size="default" fill="solid" (click)="viewOrders()">
+            <ion-ripple-effect></ion-ripple-effect>
+            View Orders
+        </ion-button>
+        <ion-button color="primary" size="default" fill="solid" (click)="viewMenu()">
+            <ion-ripple-effect></ion-ripple-effect>
+            View Old Menu
+        </ion-button>
+        <ion-button color="primary" size="default" fill="solid" (click)="viewMonthlySummary()">
+            <ion-ripple-effect></ion-ripple-effect>
+            Monthly Summary
+        </ion-button>
+        <ion-button color="primary" size="default" fill="solid" (click)="viewOrderHistory()">
+            <ion-ripple-effect></ion-ripple-effect>
+            Order History
+        </ion-button>
+        <ion-button slot="end" color="warning" size="default" fill="solid" (click)="logout()">
+            <ion-ripple-effect></ion-ripple-effect>
+            Log Out
+        </ion-button>
+    </ion-item>
+</ion-toolbar>

@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { FillOrderPage } from './fill-order.page';
+import { ToolbarComponentModule } from '../components/toolbar/toolbar.component.module';
 
 const routes: Routes = [
   {
@@ -19,8 +20,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ToolbarComponentModule
   ],
-  declarations: [FillOrderPage]
+  declarations: [FillOrderPage],
 })
 export class FillOrderPageModule {}
