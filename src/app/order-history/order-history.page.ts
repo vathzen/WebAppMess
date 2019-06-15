@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-order-history',
@@ -14,9 +15,15 @@ export class OrderHistoryPage implements OnInit {
   public months=[];
   public totalAmt=null;
 
-  constructor(public navCtrl:NavController) { }
+  constructor(public navCtrl:NavController,private storage: Storage) { }
 
   ngOnInit() {
+    this.storage.get('regnum').then(val =>{
+      this.searchnumber=val;
+      if(this.searchnumber){
+        this.onGo();
+      }
+    });
   }
 
   onGo(){ //search for this.searchnumber
@@ -140,6 +147,10 @@ export class OrderHistoryPage implements OnInit {
       });
     }
     this.calcTotalAmt();
+  }
+
+  ionViewWillLeave(){
+    this.storage.set('regnum',null);
   }
 
 }

@@ -2,7 +2,12 @@
   <app-toolbar></app-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding scroll-y=false>
+  <ion-item lines="none">  
+    <ion-label class="head">
+      MONTHLY SUMMARY
+    </ion-label>
+  </ion-item>
   <ion-toolbar>
       <mat-form-field>
           <input matInput [matDatepicker]="fromDatepicker" [(ngModel)]="from_picker_date" (dateChange)="updatePage()" placeholder="From">
@@ -36,7 +41,7 @@
           </tr>
           <tr *ngFor="let item of students">
             <th>{{item.sno}}</th>
-            <th>{{item.regnum}}</th>
+            <th class="regnums" (click)="launchSearch(item.regnum)">{{item.regnum}}</th>
             <th>{{item.gross}}</th>
           </tr>
           <tr>
@@ -48,7 +53,7 @@
       </ion-card>
       </ion-col>
       <ion-col>
-          <div class="searchbar">
+          <div class="searchbar baritem">
               <ion-searchbar [(ngModel)]="searchitem" (ionChange)="filterItems()" color="light" placeholder="Item"></ion-searchbar>
             </div>
             <ion-card class="card itemcard">

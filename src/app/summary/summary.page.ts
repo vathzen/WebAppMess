@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { FilterPipe } from '../pipes/filter.pipe';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-summary',
@@ -10,7 +11,7 @@ import { FilterPipe } from '../pipes/filter.pipe';
 })
 export class SummaryPage implements OnInit {
 
-  constructor(public navCtrl: NavController, private filter:FilterPipe) { }
+  constructor(public navCtrl: NavController, private filter:FilterPipe, private storage: Storage) { }
   from_picker_date=null;
   to_picker_date=null;
   public items=[
@@ -89,6 +90,11 @@ export class SummaryPage implements OnInit {
     this.items.forEach(element => {
       this.itemwise_total+=element.gross;
     });
+  }
+
+  launchSearch(regnum:string){
+    this.storage.set('regnum',regnum);
+    this.navCtrl.navigateForward(['order-history']);
   }
 
 }

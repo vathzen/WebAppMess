@@ -1,3 +1,7 @@
+.head{
+    margin-inline-start: 40%;
+    font-size: 30px;
+}
 ion-searchbar{
     width: 80%;
     float: left;
@@ -10,8 +14,8 @@ ion-card{
     float: left;
 }
 .monthsitem:hover{
-    --background:lightgrey;   
+    --background:lightgrey;
 }
 .click{
-    --background:rgb(0, 162, 255);  
+    --background:rgb(0, 162, 255);
 }

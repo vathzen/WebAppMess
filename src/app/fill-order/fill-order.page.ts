@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
 import { RestService } from '../services/rest.service';
 import { Response,Menu } from '../services/classes';
 import { ToastController } from '@ionic/angular';
@@ -20,7 +20,7 @@ export class FillOrderPage implements OnInit {
     {mealname:'Dinner', item1:null, item1_cost:null, item2:null, item2_cost:null}
   ];
 
-  constructor(private loadCtrl: LoadingController,private toastController: ToastController,private restService: RestService) {
+  constructor(private loadCtrl: LoadingController,private toastController: ToastController,private restService: RestService, public navCtrl: NavController) {
   }
 
   ngOnInit() {
@@ -86,5 +86,9 @@ export class FillOrderPage implements OnInit {
             console.log(err);
         }
     )
+  }
+
+  viewButtons(){
+    this.navCtrl.navigateBack(['buttons']);
   }
 }

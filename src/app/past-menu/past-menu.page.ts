@@ -34,4 +34,8 @@ export class PastMenuPage implements OnInit {
     });
   }
 
+  viewButtons(){
+    this.navCtrl.navigateBack(['buttons']);
+  }
+
 }

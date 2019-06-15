@@ -84,5 +84,9 @@ export class OrdersPage implements OnInit {
     this.codes.push({regnum:regnum,code_array:tempcode})
     }); 
   }
+
+  viewButtons(){
+    this.navCtrl.navigateBack(['buttons']);
+  }
   
 }

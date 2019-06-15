@@ -3,6 +3,11 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-item lines="none">  
+    <ion-label class="head">
+        ORDER HISTORY
+    </ion-label>
+  </ion-item>
   <ion-searchbar [(ngModel)]="searchnumber" color="light" placeholder="Register Number" type="number"></ion-searchbar>
   <ion-button (click)="onGo()">Go</ion-button>
   <div style="clear:both;"></div>
