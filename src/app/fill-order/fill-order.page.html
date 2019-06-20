@@ -13,29 +13,32 @@
     </ion-item>
 
     <ion-list lines = "none" *ngFor="let entry of menu">
-        <ion-item class="itemhead">
-            <ion-label>{{entry.mealname}}</ion-label>
-        </ion-item>
-        <ion-item lines="none">
-            <ion-item class="firstitem" lines="inset">
-                <ion-label position="floating">Item #1</ion-label>
-                <ion-input [(ngModel)]="entry.item1" type="text"></ion-input>
+        <ion-card>
+            <ion-item class="itemhead">
+                <ion-icon color="primary" name="{{entry.icon}}"></ion-icon>
+                <ion-label class="headlabel">{{entry.mealname}}</ion-label>
             </ion-item>
-            <ion-item slot = "end" lines="inset">
-                <ion-label position="floating">Cost #1 (Rs)</ion-label>
-                <ion-input [(ngModel)]="entry.item1_cost" type="number"></ion-input>
+            <ion-item lines="none">
+                <ion-item class="firstitem" lines="inset">
+                    <ion-label position="floating">Item #1</ion-label>
+                    <ion-input [(ngModel)]="entry.item1" type="text"></ion-input>
+                </ion-item>
+                <ion-item slot = "end" lines="inset">
+                    <ion-label position="floating">Cost #1 (Rs)</ion-label>
+                    <ion-input [(ngModel)]="entry.item1_cost" type="number"></ion-input>
+                </ion-item>
             </ion-item>
-        </ion-item>
-        <ion-item lines="none">
-            <ion-item class="firstitem" lines="inset">
-                <ion-label position="floating">Item #2</ion-label>
-                <ion-input [(ngModel)]="entry.item2" type="text"></ion-input>
+            <ion-item lines="none">
+                <ion-item class="firstitem" lines="inset">
+                    <ion-label position="floating">Item #2</ion-label>
+                    <ion-input [(ngModel)]="entry.item2" type="text"></ion-input>
+                </ion-item>
+                <ion-item slot = "end" lines="inset"> 
+                    <ion-label position="floating">Cost #2 (Rs)</ion-label>
+                    <ion-input [(ngModel)]="entry.item2_cost" type="number"></ion-input>
+                </ion-item>
             </ion-item>
-            <ion-item slot = "end" lines="inset"> 
-                <ion-label position="floating">Cost #2 (Rs)</ion-label>
-                <ion-input [(ngModel)]="entry.item2_cost" type="number"></ion-input>
-            </ion-item>
-        </ion-item>
+        </ion-card>
     </ion-list>
     
     <ion-button class="backbutton" color="warning" size="default" fill="solid" (click)="viewButtons()">

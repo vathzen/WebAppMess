@@ -32,6 +32,9 @@ ion-card:hover{
     transform: scale(1.1);
     transition-duration: 200ms;
 }
+.startgrow{
+    transform: scale(0);
+}
 ion-card:active{
     background: black;
     transition-duration: 100ms;

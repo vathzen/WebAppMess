@@ -15,9 +15,9 @@ export class FillOrderPage implements OnInit {
   text_date=null;
   authStatus = new Response();
   public menu=[
-    {mealname:'Breakfast', item1:null, item1_cost:null, item2:null, item2_cost:null},
-    {mealname:'Lunch', item1:null, item1_cost:null, item2:null, item2_cost:null},
-    {mealname:'Dinner', item1:null, item1_cost:null, item2:null, item2_cost:null}
+    {mealname:'Breakfast', icon:'sunny', item1:null, item1_cost:null, item2:null, item2_cost:null},
+    {mealname:'Lunch', icon:'partly-sunny', item1:null, item1_cost:null, item2:null, item2_cost:null},
+    {mealname:'Dinner', icon:'moon', item1:null, item1_cost:null, item2:null, item2_cost:null}
   ];
 
   constructor(private loadCtrl: LoadingController,private toastController: ToastController,private restService: RestService, public navCtrl: NavController) {

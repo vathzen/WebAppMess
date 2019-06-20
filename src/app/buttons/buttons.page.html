@@ -15,7 +15,7 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-card (click)="createMenu()">
+          <ion-card [class.startgrow]="growflag" (click)="createMenu()">
             <ion-card-header>
             Create Menu
             </ion-card-header>
@@ -25,7 +25,7 @@
           </ion-card>
         </ion-col>
         <ion-col>
-          <ion-card (click)="viewOrders()">
+          <ion-card [class.startgrow]="growflag" (click)="viewOrders()">
             <ion-card-header>
               View Orders
               </ion-card-header>
@@ -35,9 +35,9 @@
           </ion-card>
         </ion-col>
         <ion-col>
-          <ion-card (click)="viewOrderHistory()">
+          <ion-card [class.startgrow]="growflag" (click)="viewOrderHistory()">
             <ion-card-header>
-              Order History
+              Student History
               </ion-card-header>
             <ion-card-content>
               <div class="iconpos pastordersicon"></div>
@@ -47,7 +47,7 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-card (click)="viewMenu()">
+          <ion-card [class.startgrow]="growflag" (click)="viewMenu()">
             <ion-card-header>
               View Old Menu
             </ion-card-header>
@@ -57,7 +57,7 @@
           </ion-card>
         </ion-col>
         <ion-col>
-          <ion-card (click)="viewMonthlySummary()">
+          <ion-card [class.startgrow]="growflag" (click)="viewMonthlySummary()">
             <ion-card-header>
               Monthly Summary
             </ion-card-header>
@@ -67,7 +67,7 @@
           </ion-card>
         </ion-col>
         <ion-col>
-          <ion-card>
+          <ion-card [class.startgrow]="growflag">
             <ion-card-header>
               Unknown
               </ion-card-header>

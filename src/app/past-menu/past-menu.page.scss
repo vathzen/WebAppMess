@@ -12,9 +12,16 @@ ion-content{
 ion-list{
     --border-bottom: 2px;
 }
+ion-card{
+    width:60%;
+    padding-bottom:8px;
+}
 .itemhead{
     font-size: 20px;
     --background:rgb(0, 162, 255);
+}
+.headlabel{
+    margin-left: 20px;
 }
 .firstitem{
     width: 70%;

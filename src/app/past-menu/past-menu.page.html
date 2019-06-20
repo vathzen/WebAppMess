@@ -22,15 +22,17 @@
               </ion-col>
               <ion-col>
                     <ion-list lines = "none" *ngFor="let entry of menu">
+                        <ion-card>
                             <ion-item class="itemhead">
-                                <ion-label>{{entry.mealname}}</ion-label>
+                                <ion-icon color="light" name="{{entry.icon}}"></ion-icon>
+                                <ion-label class="headlabel">{{entry.mealname}}</ion-label>
                             </ion-item>
                             <ion-item lines="none">
                                 <ion-item class="firstitem" lines="inset">
                                     <ion-label>{{entry.item1}}</ion-label>
                                 </ion-item>
                                 <ion-item slot = "end" lines="inset">
-                                    <ion-label>{{entry.item1_cost}}</ion-label>
+                                    <ion-label *ngIf="entry.item1_cost">Rs. {{entry.item1_cost}}</ion-label>
                                 </ion-item>
                             </ion-item>
                             <ion-item lines="none">
@@ -38,10 +40,11 @@
                                     <ion-label>{{entry.item2}}</ion-label>
                                 </ion-item>
                                 <ion-item slot = "end" lines="inset"> 
-                                    <ion-label>{{entry.item2_cost}}</ion-label>
+                                    <ion-label *ngIf="entry.item2_cost">Rs. {{entry.item2_cost}}</ion-label>
                                 </ion-item>
                             </ion-item>
-                        </ion-list>
+                        </ion-card>
+                    </ion-list>
               </ion-col>
             </ion-row>
     </ion-grid>
