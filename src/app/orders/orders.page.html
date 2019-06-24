@@ -8,7 +8,7 @@
     </ion-card-header>
     <div class="calendar">
         <mat-form-field>
-            <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="picker_date" (dateChange)="dateChanged()">
+            <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="picker_date" min="2019-04-01" [max]="maxdate" (dateChange)="dateChanged()">
             <mat-datepicker-toggle matSuffix [for]="myDatepicker">
                 <div class="calenderico" matDatepickerToggleIcon></div>
             </mat-datepicker-toggle>

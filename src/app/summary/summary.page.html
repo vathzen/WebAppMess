@@ -10,14 +10,14 @@
   </ion-item>
   <ion-toolbar>
       <mat-form-field>
-          <input matInput [matDatepicker]="fromDatepicker" [(ngModel)]="from_picker_date" (dateChange)="updatePage()" placeholder="From">
+          <input matInput [matDatepicker]="fromDatepicker" [(ngModel)]="from_picker_date" min="2019-04-01" [max]="maxdate" (dateChange)="updatePage()" placeholder="From">
           <mat-datepicker-toggle matSuffix [for]="fromDatepicker">
               <div class="calenderico" matDatepickerToggleIcon></div>
           </mat-datepicker-toggle>
           <mat-datepicker #fromDatepicker></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-          <input matInput [matDatepicker]="toDatepicker" [(ngModel)]="to_picker_date" (dateChange)="updatePage()" placeholder="To">
+          <input matInput [matDatepicker]="toDatepicker" [(ngModel)]="to_picker_date" min="2019-04-01" [max]="maxdate" (dateChange)="updatePage()" placeholder="To">
           <mat-datepicker-toggle matSuffix [for]="toDatepicker">
               <div class="calenderico" matDatepickerToggleIcon></div>
           </mat-datepicker-toggle>

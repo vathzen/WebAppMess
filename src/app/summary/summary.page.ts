@@ -14,6 +14,7 @@ export class SummaryPage implements OnInit {
   constructor(public navCtrl: NavController, private filter:FilterPipe, private storage: Storage) { }
   from_picker_date=null;
   to_picker_date=null;
+  maxdate=null;
   public items=[
     {sno:1, itemname:'Rice', gross:20},
     {sno:2, itemname:'Dosa', gross:30},
@@ -46,6 +47,7 @@ export class SummaryPage implements OnInit {
 
   ngOnInit() {
     this.to_picker_date=new Date();
+    this.maxdate=this.to_picker_date;
     this.from_picker_date=new Date();
     this.from_picker_date.setDate(1);
     this.updatePage();

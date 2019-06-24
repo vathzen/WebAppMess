@@ -11,6 +11,7 @@ export class OrdersPage implements OnInit {
   constructor(public navCtrl: NavController) { }
   picker_date=null;
   text_date=null;
+  maxdate=null;
   //EVERYTHING IS WRT THIS USER, USE CONTEXT OF this.user.username for db queries
   public orders=[
     {mealname:'Breakfast', item1:null, item1_count:null, item2:null, item2_count:null, span:0},
@@ -24,6 +25,7 @@ export class OrdersPage implements OnInit {
     //this.picker_date=this.text_date=today's date from server
     this.text_date = new Date().toString();
     this.picker_date= new Date();
+    this.maxdate=this.picker_date;
     this.updateTotal();
     this.updateTable();
   }
@@ -41,6 +43,7 @@ export class OrdersPage implements OnInit {
     var i=0;
     this.nullIndices.splice(0,this.nullIndices.length);
     this.orders.forEach(item => {//each iteration for each meal FOR GIVEN DATE
+      item.span=0;
       if(orders[i]!=null){
         item.item1=orders[i].toString();
         item.item1_count=Number(orders_count[i/2]);

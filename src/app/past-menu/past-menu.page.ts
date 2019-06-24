@@ -10,6 +10,7 @@ export class PastMenuPage implements OnInit {
 
   constructor(public navCtrl:NavController) { }
   picker_date=null;
+  maxdate=null;
   public menu=[
     {mealname:'Breakfast', icon:'sunny',item1:null, item1_cost:null, item2:null, item2_cost:null},
     {mealname:'Lunch', icon:'partly-sunny',item1:null, item1_cost:null, item2:null, item2_cost:null},
@@ -17,7 +18,8 @@ export class PastMenuPage implements OnInit {
   ];
 
   ngOnInit() {
-    //this.picker_date=today's date from server
+    this.picker_date= new Date(); //today's date from server
+    this.maxdate=this.picker_date;
     this.updatePage();
   }
 
