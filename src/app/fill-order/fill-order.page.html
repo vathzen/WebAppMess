@@ -21,7 +21,9 @@
             <ion-item lines="none">
                 <ion-item class="firstitem" lines="inset">
                     <ion-label position="floating">Item #1</ion-label>
-                    <ion-input [(ngModel)]="entry.item1" type="text"></ion-input>
+                    <ion-select placeholder="Select Item">
+                        <ion-select-option *ngFor="let item of items" value=item>{{item}}</ion-select-option>
+                    </ion-select>
                 </ion-item>
                 <ion-item slot = "end" lines="inset">
                     <ion-label position="floating">Cost #1 (Rs)</ion-label>

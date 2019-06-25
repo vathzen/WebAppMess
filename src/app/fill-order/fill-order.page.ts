@@ -13,6 +13,7 @@ import { ToastController } from '@ionic/angular';
 export class FillOrderPage implements OnInit {
   date=null;
   text_date=null;
+  items=null;
   authStatus = new Response();
   public menu=[
     {mealname:'Breakfast', icon:'sunny', item1:null, item1_cost:null, item2:null, item2_cost:null},
@@ -26,7 +27,11 @@ export class FillOrderPage implements OnInit {
   ngOnInit() {
     this.date = new Date(); //Get date from server
     this.text_date = this.date.toString();
+    this.items = ['Dosa','Sandwich','Gobi','Idly','Pongal','Dosa','Sandwich','Gobi','Idly','Pongal','Dosa','Sandwich','Gobi','Idly','Pongal','Dosa','Sandwich','Gobi','Idly','Pongal']; //std menu items from server
     this.updatePage();
+  }
+
+  getItems(){
   }
 
   updatePage(){
