@@ -27,15 +27,31 @@ export class FillOrderPage implements OnInit {
   ngOnInit() {
     this.date = new Date(); //Get date from server
     this.text_date = this.date.toString();
-    this.items = ['Dosa','Sandwich','Gobi','Idly','Pongal','Dosa','Sandwich','Gobi','Idly','Pongal','Dosa','Sandwich','Gobi','Idly','Pongal','Dosa','Sandwich','Gobi','Idly','Pongal']; //std menu items from server
+    this.items = ['Veg Fried Rice','Gobi Fried Rice','Paneer Fried Rice','Veg Noodles','Gobi Noodles','Paneer Noodles','Chilly Paneer',
+                  'Chilly Gobi','Chilly Aloo','Chilly Baby Corn','Veg Manchurian Ball','Gobi Manchurian','Malai Kofta','Kadai Paneer',
+                  'Dum Aloo','Gobi 65','Paneer 65','French Fries','Mata Paneer','Puttu With Curry','Idiyappam With Kurma','Masala Dosa',
+                  'Aloo Paratha With Curd','Veg Sandwich','Plain Dosa','Uthappam','Onion Uthappam','Bread Butter Jam','Corn Flaskes With Milk']; 
+                  //std menu items from server
     this.updatePage();
   }
 
-  getItems(){
+  selectChange(entry:any){
+    this.menu.forEach(element => {
+      if(entry.mealname==element.mealname){
+        if(entry.item1=='--None--'){
+          element.item1=null;
+          element.item1_cost=null;
+        }
+        if(entry.item2=='--None--'){
+          element.item2=null;
+          element.item2_cost=null;
+        }
+      }
+    });
   }
 
   updatePage(){
-      var menu = ['Dosa',30,null,null,null,null,null,null,'Noodles',50,'Fried Rice',50];//assuming we get this
+      var menu = ['Veg Fried Rice',30,null,null,null,null,null,null,'Veg Noodles',50,'Gobi Noodles',50];//assuming we get this
       var i=0;
       this.menu.forEach(entry => {
         entry.item1=menu[i];
