@@ -21,7 +21,10 @@
             <ion-item lines="none">
                 <ion-item class="firstitem" lines="inset">
                     <ion-label position="floating">Item #1</ion-label>
-                    <ion-input [(ngModel)]="entry.item1" type="text"></ion-input>
+                    <ion-select interface="alert" [(ngModel)]="entry.item1" (ionChange)="selectChange(entry)" placeholder="Select Item">
+                        <ion-select-option>--None--</ion-select-option>
+                        <ion-select-option *ngFor="let item of items">{{item}}</ion-select-option>
+                    </ion-select>
                 </ion-item>
                 <ion-item slot = "end" lines="inset">
                     <ion-label position="floating">Cost #1 (Rs)</ion-label>
@@ -31,7 +34,10 @@
             <ion-item lines="none">
                 <ion-item class="firstitem" lines="inset">
                     <ion-label position="floating">Item #2</ion-label>
-                    <ion-input [(ngModel)]="entry.item2" type="text"></ion-input>
+                   <ion-select interface="alert" [(ngModel)]="entry.item2" (ionChange)="selectChange(entry)" placeholder="Select Item">
+                        <ion-select-option>--None--</ion-select-option>
+                        <ion-select-option *ngFor="let item of items">{{item}}</ion-select-option>
+                    </ion-select>
                 </ion-item>
                 <ion-item slot = "end" lines="inset"> 
                     <ion-label position="floating">Cost #2 (Rs)</ion-label>
