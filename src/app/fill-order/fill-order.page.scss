@@ -15,13 +15,14 @@ ion-list{
     margin-bottom: 40px;
     width: 60%;
 }
-mat-form-field{
-    width: 50%;
-}
 ion-card{
     margin-top:0px;
     margin-bottom: 0px;
     padding-bottom:20px;
+}
+.dropdown{
+    --min-width:500px;
+    --min-height:500px;
 }
 .itemhead{
     font-size: 20px;

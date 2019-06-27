@@ -14,6 +14,9 @@ export class FillOrderPage implements OnInit {
   date=null;
   text_date=null;
   items=null;
+  dropdownOptions: any = {
+    cssClass:'.dropdown'
+  };
   authStatus = new Response();
   public menu=[
     {mealname:'Breakfast', icon:'sunny', item1:null, item1_cost:null, item2:null, item2_cost:null},
@@ -30,7 +33,7 @@ export class FillOrderPage implements OnInit {
     this.items = ['Veg Fried Rice','Gobi Fried Rice','Paneer Fried Rice','Veg Noodles','Gobi Noodles','Paneer Noodles','Chilly Paneer',
                   'Chilly Gobi','Chilly Aloo','Chilly Baby Corn','Veg Manchurian Ball','Gobi Manchurian','Malai Kofta','Kadai Paneer',
                   'Dum Aloo','Gobi 65','Paneer 65','French Fries','Mata Paneer','Puttu With Curry','Idiyappam With Kurma','Masala Dosa',
-                  'Aloo Paratha With Curd','Veg Sandwich','Plain Dosa','Uthappam','Onion Uthappam','Bread Butter Jam','Corn Flaskes With Milk']; 
+                  'Aloo Paratha With Curd','Veg Sandwich','Plain Dosa','Uthappam','Onion Uthappam','Bread Butter Jam','Corn Flaskes With Milk'];
                   //std menu items from server
     this.updatePage();
   }

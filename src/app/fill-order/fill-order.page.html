@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-item lines="none">  
+    <ion-item lines="none">
         <ion-label class="head">
             TODAY'S MENU
         </ion-label>
@@ -21,7 +21,7 @@
             <ion-item lines="none">
                 <ion-item class="firstitem" lines="inset">
                     <ion-label position="floating">Item #1</ion-label>
-                    <ion-select interface="alert" [(ngModel)]="entry.item1" (ionChange)="selectChange(entry)" placeholder="Select Item">
+                    <ion-select interface="alert" [(ngModel)]="entry.item1" [interfaceOptions]="dropdownOptions" (ionChange)="selectChange(entry)" placeholder="Select Item">
                         <ion-select-option>--None--</ion-select-option>
                         <ion-select-option *ngFor="let item of items">{{item}}</ion-select-option>
                     </ion-select>
@@ -39,14 +39,14 @@
                         <ion-select-option *ngFor="let item of items">{{item}}</ion-select-option>
                     </ion-select>
                 </ion-item>
-                <ion-item slot = "end" lines="inset"> 
+                <ion-item slot = "end" lines="inset">
                     <ion-label position="floating">Cost #2 (Rs)</ion-label>
                     <ion-input [(ngModel)]="entry.item2_cost" type="number"></ion-input>
                 </ion-item>
             </ion-item>
         </ion-card>
     </ion-list>
-    
+
     <ion-button class="backbutton" color="warning" size="default" fill="solid" (click)="viewButtons()">
             BACK
     </ion-button>
