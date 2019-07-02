@@ -15,7 +15,7 @@ export class FillOrderPage implements OnInit {
   text_date=null;
   items=null;
   dropdownOptions: any = {
-    cssClass:'.dropdown'
+    cssClass:'dropdown'
   };
   authStatus = new Response();
   public menu=[
@@ -30,24 +30,47 @@ export class FillOrderPage implements OnInit {
   ngOnInit() {
     this.date = new Date(); //Get date from server
     this.text_date = this.date.toString();
-    this.items = ['Veg Fried Rice','Gobi Fried Rice','Paneer Fried Rice','Veg Noodles','Gobi Noodles','Paneer Noodles','Chilly Paneer',
-                  'Chilly Gobi','Chilly Aloo','Chilly Baby Corn','Veg Manchurian Ball','Gobi Manchurian','Malai Kofta','Kadai Paneer',
-                  'Dum Aloo','Gobi 65','Paneer 65','French Fries','Mata Paneer','Puttu With Curry','Idiyappam With Kurma','Masala Dosa',
-                  'Aloo Paratha With Curd','Veg Sandwich','Plain Dosa','Uthappam','Onion Uthappam','Bread Butter Jam','Corn Flaskes With Milk'];
+    this.items = [{name:'Veg Fried Rice', cost:30},{name:'Gobi Fried Rice', cost:30},{name:'Paneer Fried Rice', cost:30},
+                  {name:'Veg Noodles', cost:30},{name:'Gobi Noodles', cost:30},{name:'Paneer Noodles', cost:30},
+                  {name:'Chilly Paneer', cost:30},{name:'Chilly Gobi', cost:30},{name:'Chilly Aloo', cost:30},
+                  {name:'Chilly Baby Corn', cost:30},{name:'Veg Manchurian Ball', cost:30},{name:'Gobi Manchurian', cost:30},
+                  {name:'Malai Kofta', cost:30},{name:'Kadai Paneer', cost:30},{name:'Dum Aloo', cost:30},{name:'Gobi 65', cost:30},
+                  {name:'Paneer 65', cost:30},{name:'French Fries', cost:30},{name:'Mata Paneer', cost:30},{name:'Puttu With Curry', cost:30},
+                  {name:'Idiyappam With Kurma', cost:30},{name:'Masala Dosa', cost:30},{name:'Aloo Paratha With Curd', cost:30},
+                  {name:'Veg Sandwich', cost:30},{name:'Plain Dosa', cost:30},{name:'Uthappam', cost:30},{name:'Onion Uthappam', cost:30},
+                  {name:'Bread Butter Jam', cost:30},{name:'Corn Flaskes With Milk', cost:30}];
                   //std menu items from server
     this.updatePage();
   }
 
-  selectChange(entry:any){
+  selectChange(entry:any,num:number){
     this.menu.forEach(element => {
       if(entry.mealname==element.mealname){
-        if(entry.item1=='--None--'){
-          element.item1=null;
-          element.item1_cost=null;
+        if(num==1){
+          if(entry.item1=='--None--'){
+            element.item1=null;
+            element.item1_cost=null;
+          }
+          else{
+            this.items.forEach((item: { name: any; cost: any; }) => {
+              if(item.name==entry.item1){
+                element.item1_cost=item.cost;
+              }
+            });
+          }
         }
-        if(entry.item2=='--None--'){
-          element.item2=null;
-          element.item2_cost=null;
+        else{
+          if(entry.item2=='--None--'){
+            element.item2=null;
+            element.item2_cost=null;
+          }
+          else{
+            this.items.forEach((item: { name: any; cost: any; }) => {
+              if(item.name==entry.item2){
+                element.item2_cost=item.cost;
+              }
+            });
+          }
         }
       }
     });

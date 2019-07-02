@@ -36,6 +36,10 @@ export class ToolbarComponent implements OnInit {
     this.navCtrl.navigateRoot(['order-history']);
   }
 
+  viewManageItems(){
+    this.navCtrl.navigateForward(['manage-items']);
+  }
+
   logout(){
     this.navCtrl.navigateRoot(['home']);
   }
