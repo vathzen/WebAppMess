@@ -24,8 +24,8 @@ export class ToolbarComponent implements OnInit {
     this.navCtrl.navigateRoot(['orders']);
   }
 
-  viewMenu(){
-    this.navCtrl.navigateRoot(['past-menu']);
+  viewVerify(){
+    this.navCtrl.navigateRoot(['verify-students']);
   }
 
   viewMonthlySummary(){

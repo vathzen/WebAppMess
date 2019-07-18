@@ -1,0 +1,16 @@
+<ion-header>
+  <app-toolbar></app-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="inset">
+    <ion-item>
+      <ion-label>Register Number</ion-label>
+      <ion-label>Code</ion-label>
+    </ion-item>
+    <ion-item *ngFor="let entry of data">
+      <ion-label>{{entry.regnum}}</ion-label>
+      <ion-label>{{entry.code}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

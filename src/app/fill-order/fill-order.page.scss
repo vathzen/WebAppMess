@@ -1,24 +1,26 @@
 ion-content{
     text-align: center;
+    --background: #fff url('../../assets/images/paneerbg.jpg') no-repeat center center / cover;
+}
+.headitem{
+    --background: none;
 }
 .head{
-    margin-inline-start: 40%;
+    margin-inline-start: 32%;
     font-size: 30px;
-}
-.date{
-    margin-inline-start: 15%;
-    font-size: 20px;
 }
 ion-list{
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 40px;
     width: 60%;
+    background:none;
 }
 ion-card{
     margin-top:0px;
     margin-bottom: 0px;
     padding-bottom:20px;
+    background: white;
 }
 .itemhead{
     font-size: 20px;

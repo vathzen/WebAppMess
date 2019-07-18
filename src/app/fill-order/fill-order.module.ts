@@ -8,6 +8,8 @@ import { IonicModule } from '@ionic/angular';
 import { FillOrderPage } from './fill-order.page';
 import { ToolbarComponentModule } from '../components/toolbar/toolbar.component.module';
 
+import { MaterialModule } from '../material.module';
+
 const routes: Routes = [
   {
     path: '',
@@ -20,6 +22,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    MaterialModule,
     RouterModule.forChild(routes),
     ToolbarComponentModule
   ],

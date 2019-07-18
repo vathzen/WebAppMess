@@ -11,9 +11,11 @@ import { ToastController } from '@ionic/angular';
 })
 
 export class FillOrderPage implements OnInit {
-  date=null;
-  text_date=null;
   items=null;
+  displayFlag=null;
+  date = new Date() //get server date
+  maxdate=this.date.toLocaleDateString().split('T')[0]; 
+  picker_date=this.date;
   dropdownOptions: any = {
     cssClass:'dropdown'
   };
@@ -28,8 +30,6 @@ export class FillOrderPage implements OnInit {
   }
 
   ngOnInit() {
-    this.date = new Date(); //Get date from server
-    this.text_date = this.date.toString();
     this.items = [{name:'Veg Fried Rice', cost:30},{name:'Gobi Fried Rice', cost:30},{name:'Paneer Fried Rice', cost:30},
                   {name:'Veg Noodles', cost:30},{name:'Gobi Noodles', cost:30},{name:'Paneer Noodles', cost:30},
                   {name:'Chilly Paneer', cost:30},{name:'Chilly Gobi', cost:30},{name:'Chilly Aloo', cost:30},
@@ -77,6 +77,7 @@ export class FillOrderPage implements OnInit {
   }
 
   updatePage(){
+    this.displayFlag = this.picker_date.toLocaleDateString() == this.maxdate;
       var menu = ['Veg Fried Rice',30,null,null,null,null,null,null,'Veg Noodles',50,'Gobi Noodles',50];//assuming we get this
       var i=0;
       this.menu.forEach(entry => {

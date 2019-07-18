@@ -7,7 +7,8 @@ import { MatButtonModule,
         MatTabsModule,
         MatNativeDateModule,
         MatFormFieldModule,
-        MatSelectModule
+        MatSelectModule,
+        MAT_DATE_LOCALE
         } from '@angular/material';
 //import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
@@ -34,7 +35,7 @@ import { MatButtonModule,
       MatTabsModule,
       MatSelectModule
     ],
-    providers: [ MatDatepickerModule, MatSelectModule],
+    providers: [ MatDatepickerModule, MatSelectModule, {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],
   })
   
   export class MaterialModule {}

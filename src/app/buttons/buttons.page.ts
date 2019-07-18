@@ -34,8 +34,8 @@ export class ButtonsPage implements OnInit {
     this.navCtrl.navigateForward(['order-history']);
   }
 
-  viewMenu(){
-    this.navCtrl.navigateForward(['past-menu']);
+  viewVerify(){
+    this.navCtrl.navigateForward(['verify-students']);
   }
   
   viewMonthlySummary(){
