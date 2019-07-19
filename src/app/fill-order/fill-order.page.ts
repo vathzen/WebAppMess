@@ -13,8 +13,8 @@ import { ToastController } from '@ionic/angular';
 export class FillOrderPage implements OnInit {
   items=null;
   displayFlag=null;
-  date = new Date() //get server date
-  maxdate=this.date.toLocaleDateString().split('T')[0]; 
+  dateStr='2019-07-20'; //get server date assuming we get 2019-07-20
+  date = new Date(this.dateStr);
   picker_date=this.date;
   dropdownOptions: any = {
     cssClass:'dropdown'
@@ -77,7 +77,7 @@ export class FillOrderPage implements OnInit {
   }
 
   updatePage(){
-    this.displayFlag = this.picker_date.toLocaleDateString() == this.maxdate;
+    this.displayFlag = this.picker_date.toLocaleDateString() == this.date.toLocaleDateString();
       var menu = ['Veg Fried Rice',30,null,null,null,null,null,null,'Veg Noodles',50,'Gobi Noodles',50];//assuming we get this
       var i=0;
       this.menu.forEach(entry => {

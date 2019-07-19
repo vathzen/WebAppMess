@@ -5,7 +5,7 @@
 <ion-content padding>
     <ion-item class="headitem" lines="none">
         <mat-form-field>
-            <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="picker_date" min="2019-04-01" [max]="maxdate" (dateChange)="updatePage()" placeholder="Select a Date">
+            <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="picker_date" min="2019-04-01" [max]="dateStr" (dateChange)="updatePage()" placeholder="Select a Date">
             <mat-datepicker-toggle matSuffix [for]="myDatepicker">
                 <div class="calenderico" matDatepickerToggleIcon></div>
             </mat-datepicker-toggle>

@@ -1,6 +1,6 @@
 ion-content{
     text-align: center;
-    --background: #fff url('../../assets/images/allbg.jpg') no-repeat center center / cover;
+    --background: #fff url('../../assets/images/allbg.jpeg') no-repeat center center / cover;
 }
 ion-toolbar{
     --background: rgb(0, 162, 255);
@@ -12,9 +12,7 @@ ion-card-title{
 ion-card{
     margin-left: auto;
     margin-right: auto;
-    width: 34%;
-    height: 62%;
-    margin-top: 0%;
+    width: 30%;
     background: white;
 }
 ion-button{
