@@ -12,6 +12,11 @@ export class VerifyStudentsPage implements OnInit {
   public data=[{regnum:120004213,code:1234},{regnum:120004214,code:1254},{regnum:120004215,code:5495}];
 
   ngOnInit() {
+    console.log('called')
+  }
+
+  refresh(){
+    this.ngOnInit();
   }
 
 }
