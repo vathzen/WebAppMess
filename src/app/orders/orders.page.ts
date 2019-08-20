@@ -32,6 +32,7 @@ export class OrdersPage implements OnInit {
 
   dateChanged(){
     this.text_date=this.picker_date.toString();
+    console.log(this.text_date)
     this.updateTotal();
     this.updateTable();
   }
@@ -68,7 +69,7 @@ export class OrdersPage implements OnInit {
     //Heading over, body starts
     this.codes.splice(0,this.codes.length); //delete prev day codes
     //get from db and push as {regnum:'regnum from db', code_array:[code1,code2,..code6] from db}
-    
+
     var tempcodes = [
     ["120005000","code1",null,null,null,"code2",null],
     ["120005001",null,null,null,null,null,"code2"],
@@ -85,11 +86,11 @@ export class OrdersPage implements OnInit {
         x++;
       });
     this.codes.push({regnum:regnum,code_array:tempcode})
-    }); 
+    });
   }
 
   viewButtons(){
     this.navCtrl.navigateBack(['buttons']);
   }
-  
+
 }
