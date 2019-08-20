@@ -29,3 +29,9 @@ ion-item{
     height: 24px;
     background: #fff url('./assets/images/calendarico.png') no-repeat center center / cover;
 }
+ion-alert.dropdown{
+    --min-width:25%;
+}
+ion-content{
+    user-select: none;
+}

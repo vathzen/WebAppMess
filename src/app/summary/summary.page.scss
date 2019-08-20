@@ -26,6 +26,8 @@ table{
 }
 th, td {
     padding: 3px;
+    padding-left: 30px;
+    padding-right:30px;
     border: 1px solid black
 }
 .card{
@@ -36,7 +38,7 @@ th, td {
     text-align: center;
 }
 .studentcard{
-    width: 35%;
+    width: 60%;
     max-height: 70%;
 }
 .regnums{
@@ -46,8 +48,14 @@ th, td {
     background: rgb(231, 231, 231);
 }
 .itemcard{
-    width: 50%;
+    width: 60%;
     max-height: 70%;
+}
+.itemicon{
+    margin-left: 10px;
+}
+.cashicon{
+    margin-left: 20px;
 }
 ion-note{
     --color:black;

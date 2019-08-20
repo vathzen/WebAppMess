@@ -27,9 +27,13 @@
         <ion-label>Register number: {{numbersearched}}</ion-label>
       </ion-list-header>
       <ion-item lines="none">
-          <ion-label>        </ion-label>
+          <ion-icon slot="start" name="pizza" color="primary"></ion-icon>
+          <ion-label> </ion-label>
+          <ion-icon name="logo-buffer" color="primary"></ion-icon>
           <ion-label>Quantity</ion-label>
+          <ion-icon name="pricetag" color="primary"></ion-icon>
           <ion-label>Price</ion-label>
+          <ion-icon name="cash" class="cashicon" color="primary"></ion-icon>
           <ion-label slot="end">Amount</ion-label>
       </ion-item>
       <ion-item-group *ngFor="let month of full_data">

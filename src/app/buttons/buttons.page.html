@@ -17,7 +17,7 @@
         <ion-col>
           <ion-card [class.startgrow]="growflag" (click)="createMenu()">
             <ion-card-header>
-            Create Menu
+            Menu
             </ion-card-header>
             <ion-card-content>
               <div class="iconpos createicon"></div>
@@ -47,12 +47,12 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-card [class.startgrow]="growflag" (click)="viewMenu()">
+          <ion-card [class.startgrow]="growflag" (click)="viewVerify()">
             <ion-card-header>
-              View Old Menu
+              Verify Students
             </ion-card-header>
             <ion-card-content>
-              <div class="iconpos pastmenuicon"></div>
+              <div class="iconpos verifyicon"></div>
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -67,12 +67,12 @@
           </ion-card>
         </ion-col>
         <ion-col>
-          <ion-card [class.startgrow]="growflag">
+          <ion-card [class.startgrow]="growflag" (click)="viewManageItems()">
             <ion-card-header>
               Manage Items
               </ion-card-header>
             <ion-card-content>
-              <div class="iconpos">X</div>
+              <div class="iconpos manageicon"></div>
             </ion-card-content>
           </ion-card>
         </ion-col>

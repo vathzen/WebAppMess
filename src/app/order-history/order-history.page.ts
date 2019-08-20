@@ -114,7 +114,7 @@ export class OrderHistoryPage implements OnInit {
     this.totalAmt=0;
     this.full_data.forEach(element => {
       if(element.selected){
-        element.items.forEach(ele => {
+        element.items.forEach((ele: { quantity: number; price: number; }) => {
           this.totalAmt=this.totalAmt+ele.quantity*ele.price;
         });
       }

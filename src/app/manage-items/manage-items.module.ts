@@ -5,15 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PastMenuPage } from './past-menu.page';
+import { ManageItemsPage } from './manage-items.page';
 import { ToolbarComponentModule } from '../components/toolbar/toolbar.component.module';
-
-import { MaterialModule } from '../material.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: PastMenuPage
+    component: ManageItemsPage
   }
 ];
 
@@ -23,9 +21,8 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    MaterialModule,
     ToolbarComponentModule
   ],
-  declarations: [PastMenuPage]
+  declarations: [ManageItemsPage]
 })
-export class PastMenuPageModule {}
+export class ManageItemsPageModule {}

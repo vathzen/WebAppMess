@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilterPipe } from './pipes/filter.pipe';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [AppComponent, FilterPipe],
@@ -22,6 +23,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     StatusBar,
     SplashScreen,
     DatePicker,
+    AuthGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

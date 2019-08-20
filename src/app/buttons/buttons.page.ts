@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { AuthGuard } from '../auth.guard';
 @Component({
   selector: 'app-buttons',
   templateUrl: './buttons.page.html',
@@ -7,7 +8,7 @@ import { NavController } from '@ionic/angular';
 })
 export class ButtonsPage implements OnInit {
 
-  constructor(public navCtrl: NavController) { }
+  constructor(public navCtrl: NavController, private auth: AuthGuard) { }
   private user={username:'', pswrd:'', contractor:'', messname:''}; //idk whr to use these yet
   growflag:boolean=true
 
@@ -22,7 +23,7 @@ export class ButtonsPage implements OnInit {
   }
   
   createMenu(){
-      this.navCtrl.navigateForward(['fill-order']);
+    this.navCtrl.navigateForward(['fill-order']);
   }
 
   viewOrders(){
@@ -33,15 +34,20 @@ export class ButtonsPage implements OnInit {
     this.navCtrl.navigateForward(['order-history']);
   }
 
-  viewMenu(){
-    this.navCtrl.navigateForward(['past-menu']);
+  viewVerify(){
+    this.navCtrl.navigateForward(['verify-students']);
   }
   
   viewMonthlySummary(){
     this.navCtrl.navigateForward(['summary']);
   }
 
+  viewManageItems(){
+    this.navCtrl.navigateForward(['manage-items']);
+  }
+
   logout(){
-      this.navCtrl.navigateRoot(['home']);
+    this.navCtrl.navigateRoot(['home']);
+    this.auth.setLoggedIn(false); // place in rest service, import guard in service
   }
 }

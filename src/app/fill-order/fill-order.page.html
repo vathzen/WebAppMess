@@ -3,17 +3,21 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-item lines="none">
+    <ion-item class="headitem" lines="none">
+        <mat-form-field>
+            <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="picker_date" min="2019-04-01" [max]="dateStr" (dateChange)="updatePage()" placeholder="Select a Date">
+            <mat-datepicker-toggle matSuffix [for]="myDatepicker">
+                <div class="calenderico" matDatepickerToggleIcon></div>
+            </mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
+        </mat-form-field>
         <ion-label class="head">
-            TODAY'S MENU
-        </ion-label>
-        <ion-label class="date">
-            Date: {{text_date[8]}}{{text_date[9]}} {{text_date[4]}}{{text_date[5]}}{{text_date[6]}} {{text_date[11]}}{{text_date[12]}}{{text_date[13]}}{{text_date[14]}}
+            MENU
         </ion-label>
     </ion-item>
 
     <ion-list lines = "none" *ngFor="let entry of menu">
-        <ion-card>
+        <ion-card *ngIf="displayFlag">
             <ion-item class="itemhead">
                 <ion-icon color="primary" name="{{entry.icon}}"></ion-icon>
                 <ion-label class="headlabel">{{entry.mealname}}</ion-label>
@@ -21,27 +25,49 @@
             <ion-item lines="none">
                 <ion-item class="firstitem" lines="inset">
                     <ion-label position="floating">Item #1</ion-label>
-                    <ion-select interface="alert" [(ngModel)]="entry.item1" [interfaceOptions]="dropdownOptions" (ionChange)="selectChange(entry)" placeholder="Select Item">
+                    <ion-select interface="alert" [(ngModel)]="entry.item1" [selectedText]="entry.item1" [interfaceOptions]="dropdownOptions" (ionChange)="selectChange(entry,1)" placeholder="Select Item">
                         <ion-select-option>--None--</ion-select-option>
-                        <ion-select-option *ngFor="let item of items">{{item}}</ion-select-option>
+                        <ion-select-option *ngFor="let item of items" [value]="item.name">{{item.name}}    (Rs.{{item.cost}})</ion-select-option>
                     </ion-select>
                 </ion-item>
                 <ion-item slot = "end" lines="inset">
                     <ion-label position="floating">Cost #1 (Rs)</ion-label>
-                    <ion-input [(ngModel)]="entry.item1_cost" type="number"></ion-input>
+                    <ion-input [(ngModel)]="entry.item1_cost" disabled=true type="number"></ion-input>
                 </ion-item>
             </ion-item>
             <ion-item lines="none">
                 <ion-item class="firstitem" lines="inset">
                     <ion-label position="floating">Item #2</ion-label>
-                   <ion-select interface="alert" [(ngModel)]="entry.item2" (ionChange)="selectChange(entry)" placeholder="Select Item">
+                   <ion-select interface="alert" [(ngModel)]="entry.item2" [selectedText]="entry.item2" [interfaceOptions]="dropdownOptions" (ionChange)="selectChange(entry,2)" placeholder="Select Item">
                         <ion-select-option>--None--</ion-select-option>
-                        <ion-select-option *ngFor="let item of items">{{item}}</ion-select-option>
+                        <ion-select-option *ngFor="let item of items" [value]="item.name">{{item.name}}    (Rs.{{item.cost}})</ion-select-option>
                     </ion-select>
                 </ion-item>
                 <ion-item slot = "end" lines="inset">
                     <ion-label position="floating">Cost #2 (Rs)</ion-label>
-                    <ion-input [(ngModel)]="entry.item2_cost" type="number"></ion-input>
+                    <ion-input [(ngModel)]="entry.item2_cost" disabled=true type="number"></ion-input>
+                </ion-item>
+            </ion-item>
+        </ion-card>
+        <ion-card *ngIf="!displayFlag">
+            <ion-item class="itemhead">
+                <ion-icon color="primary" name="{{entry.icon}}"></ion-icon>
+                <ion-label class="headlabel">{{entry.mealname}}</ion-label>
+            </ion-item>
+            <ion-item *ngIf="entry.item1" lines="none">
+                <ion-item class="firstitem" lines="inset">
+                    <ion-label>{{entry.item1}}</ion-label>
+                </ion-item>
+                <ion-item slot = "end" lines="inset">
+                    <ion-label *ngIf="entry.item1_cost">Rs. {{entry.item1_cost}}</ion-label>
+                </ion-item>
+            </ion-item>
+            <ion-item *ngIf="entry.item2" lines="none">
+                <ion-item class="firstitem" lines="inset">
+                    <ion-label>{{entry.item2}}</ion-label>
+                </ion-item>
+                <ion-item slot = "end" lines="inset"> 
+                    <ion-label *ngIf="entry.item2_cost">Rs. {{entry.item2_cost}}</ion-label>
                 </ion-item>
             </ion-item>
         </ion-card>

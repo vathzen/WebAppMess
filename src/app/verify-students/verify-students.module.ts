@@ -5,15 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FillOrderPage } from './fill-order.page';
+import { VerifyStudentsPage } from './verify-students.page';
 import { ToolbarComponentModule } from '../components/toolbar/toolbar.component.module';
-
-import { MaterialModule } from '../material.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: FillOrderPage
+    component: VerifyStudentsPage
   }
 ];
 
@@ -22,10 +20,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    MaterialModule,
-    RouterModule.forChild(routes),
-    ToolbarComponentModule
+    ToolbarComponentModule,
+    RouterModule.forChild(routes)
   ],
-  declarations: [FillOrderPage],
+  declarations: [VerifyStudentsPage]
 })
-export class FillOrderPageModule {}
+export class VerifyStudentsPageModule {}

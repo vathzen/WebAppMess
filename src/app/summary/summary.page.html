@@ -61,8 +61,10 @@
               <ion-card-content>
                   <ion-list>
                     <ion-item lines="inset">
+                        <ion-icon class="itemicon" name="pizza" color="primary"></ion-icon>
                         <ion-label>       Item</ion-label>
                         <ion-note>Gross</ion-note>
+                        <ion-icon class="cashicon" name="cash" color="primary"></ion-icon>
                       </ion-item>
                     <ion-item *ngFor="let item of items" lines="inset">
                       <ion-label>{{item.sno}}.     {{item.itemname}}</ion-label>

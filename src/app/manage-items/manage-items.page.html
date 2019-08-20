@@ -1,0 +1,34 @@
+<ion-header>
+  <app-toolbar></app-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+        MANAGE ITEMS
+        <ion-item lines="none">
+          <ion-icon class="trashicon" name="add-circle" color="primary" (click)="addItem()"></ion-icon>
+          <ion-label>Add item</ion-label>
+        </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-icon name="pizza" color="primary"></ion-icon>
+        <ion-label>Item</ion-label>
+        <ion-icon class="priceicon" name="pricetag" color="primary"></ion-icon>
+        <ion-label>Price</ion-label>
+        <ion-icon name="trash" color="danger"></ion-icon>
+      </ion-item>
+      <ion-list>
+        <ion-item *ngFor="let item of items">
+          <ion-label>{{item.name}}</ion-label>
+          <ion-item lines="inset"><ion-input type="number" [(ngModel)]="item.cost"></ion-input></ion-item>
+          <ion-label> </ion-label>
+          <ion-icon class="trashicon" name="trash" slot="end" (click)="delete(item)"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-button color="primary" (click)="updateItems()">Update</ion-button>
+  <ion-button color="warning" (click)="reset()">Reset all changes</ion-button>
+</ion-content>
