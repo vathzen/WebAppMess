@@ -14,7 +14,8 @@ export class VerifyStudentsPage implements OnInit {
   //public data = [];
 
   ngOnInit() {
-    /*  this.restService.getCodes().subscribe(
+    console.log('called');
+    this.restService.getCodes().subscribe(
           (response) => {
               this.data = response;
               console.log(this.data);
@@ -22,7 +23,11 @@ export class VerifyStudentsPage implements OnInit {
           err => {
               console.log(err)
           }
-      )*/
+    );
+  }
+
+  refresh(){
+    this.ngOnInit();
   }
 
 }

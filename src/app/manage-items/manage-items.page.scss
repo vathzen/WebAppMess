@@ -11,13 +11,23 @@ ion-card{
 ion-card-header{
     text-align: center;
 }
-ion-input{
-    width: 50px;
+.editicon{
+    display: none;
+}
+.items:hover .editicon{
+    display: block;
+    margin-left: -34px;
 }
 ion-icon{
     margin-right: 10px;
 }
 .trashicon:hover{
+    background: lightgrey;
+    color: orangered;
+    border: 0.1px solid lightgrey;
+    border-radius: 6px;
+}
+.editicon:hover{
     background: lightgrey;
     color: orangered;
     border: 0.1px solid lightgrey;
