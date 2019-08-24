@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
-import { Response } from './classes';
+import { Response,Code } from './classes';
 import { Observable,throwError } from 'rxjs';
 import { catchError,map } from 'rxjs/operators';
 
@@ -29,4 +29,15 @@ export class RestService {
           catchError(this.handleError)
       );
   }
+
+public getCodes(): Observable<any>{
+    return this.httpClient.get(this.baseUrl + 'codes').pipe(
+        map(response => {
+            console.log(response)
+            return response;
+        }),
+        catchError(this.handleError)
+    );
+}
+
 }

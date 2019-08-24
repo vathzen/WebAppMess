@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RestService } from '../services/rest.service';
 
 @Component({
   selector: 'app-verify-students',
@@ -7,11 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerifyStudentsPage implements OnInit {
 
-  constructor() { }
+  constructor(private restService: RestService) { }
 
-  public data=[{regnum:120004213,code:1234},{regnum:120004214,code:1254},{regnum:120004215,code:5495}];
+  public data=[{regnum:120004213,code:'QTHSNCAY'},{regnum:120004214,code:'QJMXIHZI'},{regnum:120004215,code:'UZMDOXM'}];
+  //public data = [];
 
   ngOnInit() {
+    /*  this.restService.getCodes().subscribe(
+          (response) => {
+              this.data = response;
+              console.log(this.data);
+          },
+          err => {
+              console.log(err)
+          }
+      )*/
   }
 
 }
