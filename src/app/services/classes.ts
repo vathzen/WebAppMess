@@ -35,3 +35,12 @@ export class Menu {
         this.din2c = array[11];
     }
 }
+
+export class Code{
+    Username: string;
+    Code: string;
+
+    constructor(values: Object = {}){
+        Object.assign(this, values);
+    }
+}
