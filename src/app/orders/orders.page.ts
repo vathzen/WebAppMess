@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-orders',
@@ -8,7 +9,7 @@ import { NavController } from '@ionic/angular';
 })
 export class OrdersPage implements OnInit {
 
-  constructor(public navCtrl: NavController) { }
+  constructor(public navCtrl: NavController, private storage: Storage,) { }
   picker_date=null;
   text_date=null;
   maxdate=null;
@@ -23,11 +24,13 @@ export class OrdersPage implements OnInit {
 
   ngOnInit(){
     //this.picker_date=this.text_date=today's date from server
-    this.text_date = new Date().toString();
-    this.picker_date= new Date();
-    this.maxdate=this.picker_date;
-    this.updateTotal();
-    this.updateTable();
+    this.storage.get('dateStr').then(val =>{
+      this.text_date = new Date(val[0]).toString();
+      this.picker_date= new Date(val[0]);
+      this.maxdate=this.picker_date;
+      this.updateTotal();
+      this.updateTable();
+    });
   }
 
   dateChanged(){
@@ -71,6 +74,66 @@ export class OrdersPage implements OnInit {
     //get from db and push as {regnum:'regnum from db', code_array:[code1,code2,..code6] from db}
 
     var tempcodes = [
+    ["120005000","code1",null,null,null,"code2",null],
+    ["120005001",null,null,null,null,null,"code2"],
+    ["120005002","code1",null,null,null,"code2",null],
+    ["120005003",null,null,null,null,"code2",null],
+    ["120005004",null,null,null,null,null,"code2"],
+    ["120005000","code1",null,null,null,"code2",null],
+    ["120005001",null,null,null,null,null,"code2"],
+    ["120005002","code1",null,null,null,"code2",null],
+    ["120005003",null,null,null,null,"code2",null],
+    ["120005004",null,null,null,null,null,"code2"],
+    ["120005000","code1",null,null,null,"code2",null],
+    ["120005001",null,null,null,null,null,"code2"],
+    ["120005002","code1",null,null,null,"code2",null],
+    ["120005003",null,null,null,null,"code2",null],
+    ["120005004",null,null,null,null,null,"code2"],
+    ["120005000","code1",null,null,null,"code2",null],
+    ["120005001",null,null,null,null,null,"code2"],
+    ["120005002","code1",null,null,null,"code2",null],
+    ["120005003",null,null,null,null,"code2",null],
+    ["120005004",null,null,null,null,null,"code2"],
+    ["120005000","code1",null,null,null,"code2",null],
+    ["120005001",null,null,null,null,null,"code2"],
+    ["120005002","code1",null,null,null,"code2",null],
+    ["120005003",null,null,null,null,"code2",null],
+    ["120005004",null,null,null,null,null,"code2"],
+    ["120005000","code1",null,null,null,"code2",null],
+    ["120005001",null,null,null,null,null,"code2"],
+    ["120005002","code1",null,null,null,"code2",null],
+    ["120005003",null,null,null,null,"code2",null],
+    ["120005004",null,null,null,null,null,"code2"],
+    ["120005000","code1",null,null,null,"code2",null],
+    ["120005001",null,null,null,null,null,"code2"],
+    ["120005002","code1",null,null,null,"code2",null],
+    ["120005003",null,null,null,null,"code2",null],
+    ["120005004",null,null,null,null,null,"code2"],
+    ["120005000","code1",null,null,null,"code2",null],
+    ["120005001",null,null,null,null,null,"code2"],
+    ["120005002","code1",null,null,null,"code2",null],
+    ["120005003",null,null,null,null,"code2",null],
+    ["120005004",null,null,null,null,null,"code2"],
+    ["120005000","code1",null,null,null,"code2",null],
+    ["120005001",null,null,null,null,null,"code2"],
+    ["120005002","code1",null,null,null,"code2",null],
+    ["120005003",null,null,null,null,"code2",null],
+    ["120005004",null,null,null,null,null,"code2"],
+    ["120005000","code1",null,null,null,"code2",null],
+    ["120005001",null,null,null,null,null,"code2"],
+    ["120005002","code1",null,null,null,"code2",null],
+    ["120005003",null,null,null,null,"code2",null],
+    ["120005004",null,null,null,null,null,"code2"],
+    ["120005000","code1",null,null,null,"code2",null],
+    ["120005001",null,null,null,null,null,"code2"],
+    ["120005002","code1",null,null,null,"code2",null],
+    ["120005003",null,null,null,null,"code2",null],
+    ["120005004",null,null,null,null,null,"code2"],
+    ["120005000","code1",null,null,null,"code2",null],
+    ["120005001",null,null,null,null,null,"code2"],
+    ["120005002","code1",null,null,null,"code2",null],
+    ["120005003",null,null,null,null,"code2",null],
+    ["120005004",null,null,null,null,null,"code2"],
     ["120005000","code1",null,null,null,"code2",null],
     ["120005001",null,null,null,null,null,"code2"],
     ["120005002","code1",null,null,null,"code2",null],

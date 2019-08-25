@@ -3,57 +3,67 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-header>Total for {{text_date[0]}}{{text_date[1]}}{{text_date[2]}} ({{text_date[8]}}{{text_date[9]}} {{text_date[4]}}{{text_date[5]}}{{text_date[6]}} {{text_date[11]}}{{text_date[12]}}{{text_date[13]}}{{text_date[14]}})
-    </ion-card-header>
-    <div class="calendar">
-        <mat-form-field>
-            <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="picker_date" min="2019-04-01" [max]="maxdate" (dateChange)="dateChanged()">
-            <mat-datepicker-toggle matSuffix [for]="myDatepicker">
-                <div class="calenderico" matDatepickerToggleIcon></div>
-            </mat-datepicker-toggle>
-            <mat-datepicker #myDatepicker></mat-datepicker>
-        </mat-form-field>
-    </div>
-    <ion-card-content>
-      <ion-list>
-        <ion-item *ngFor="let entry of orders">
-            <ion-label class="meal">{{entry.mealname}}</ion-label>
-            <ion-label>{{entry.item1}}    {{entry.item1_count}}</ion-label>
-            <ion-label>{{entry.item2}}    {{entry.item2_count}}</ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
+  <ion-row>
+    <ion-col>
+        <ion-card>
+            <ion-card-header>Total for {{text_date[0]}}{{text_date[1]}}{{text_date[2]}} ({{text_date[8]}}{{text_date[9]}} {{text_date[4]}}{{text_date[5]}}{{text_date[6]}} {{text_date[11]}}{{text_date[12]}}{{text_date[13]}}{{text_date[14]}})
+            </ion-card-header>
+            <div class="calendar">
+                <mat-form-field>
+                    <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="picker_date" min="2019-04-01" [max]="maxdate" (dateChange)="dateChanged()">
+                    <mat-datepicker-toggle matSuffix [for]="myDatepicker">
+                        <div class="calenderico" matDatepickerToggleIcon></div>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #myDatepicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <ion-card-content>
+              <ion-list>
+                <ion-item *ngFor="let entry of orders">
+                    <ion-label class="meal">{{entry.mealname}}</ion-label>
+                    <ion-label>{{entry.item1}}    {{entry.item1_count}}</ion-label>
+                    <ion-label>{{entry.item2}}    {{entry.item2_count}}</ion-label>
+                </ion-item>
+              </ion-list>
+              <ion-button (click)="dateChanged()">Refresh</ion-button>
+            </ion-card-content>
+          </ion-card>
+    </ion-col>
 
-  
-  <ion-label class="orderhead">
-    Orders for {{text_date[0]}}{{text_date[1]}}{{text_date[2]}} ({{text_date[8]}}{{text_date[9]}} {{text_date[4]}}{{text_date[5]}}{{text_date[6]}} {{text_date[11]}}{{text_date[12]}}{{text_date[13]}}{{text_date[14]}})
-  </ion-label>
-
-  <table>
-    <tr>
-      <th rowspan="2">RegNum</th>
-      <ng-container *ngFor="let entry of orders">
-      <th [attr.colspan]="entry.span" *ngIf="entry.item1||entry.item2">{{entry.mealname}}</th>
-      </ng-container>
-    </tr>
-    <tr> 
-        <ng-container *ngFor="let entry of orders">
-          <th *ngIf="entry.item1">{{entry.item1}}</th>
-          <th *ngIf="entry.item2">{{entry.item2}}</th>
-        </ng-container>
-    </tr>
-    <tr *ngFor="let row of codes">
-        <td>{{row.regnum}}</td>
-        <td *ngFor="let code of row.code_array">{{code}}</td> 
-    </tr>
-  </table>
-  <ion-button class="endbuttons" color="warning" size="default" fill="solid" (click)="viewButtons()">
-      BACK
-  </ion-button>
-  <ion-button class="endbuttons" color="primary" size="default" fill="solid">
-  PRINT
-</ion-button>
+    <ion-col>
+        <ion-label class="orderhead">
+            Orders for {{text_date[0]}}{{text_date[1]}}{{text_date[2]}} ({{text_date[8]}}{{text_date[9]}} {{text_date[4]}}{{text_date[5]}}{{text_date[6]}} {{text_date[11]}}{{text_date[12]}}{{text_date[13]}}{{text_date[14]}})
+          </ion-label>
+        
+          <table>
+            <thead>
+              <tr>
+                <th rowspan="2">RegNum</th>
+                <ng-container *ngFor="let entry of orders">
+                <th [attr.colspan]="entry.span" *ngIf="entry.item1||entry.item2">{{entry.mealname}}</th>
+                </ng-container>
+              </tr>
+              <tr> 
+                  <ng-container *ngFor="let entry of orders">
+                    <th *ngIf="entry.item1">{{entry.item1}}</th>
+                    <th *ngIf="entry.item2">{{entry.item2}}</th>
+                  </ng-container>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of codes">
+                  <td>{{row.regnum}}</td>
+                  <td *ngFor="let code of row.code_array">{{code}}</td> 
+              </tr>
+            </tbody>
+          </table>
+          <ion-button class="endbuttons" color="warning" size="default" fill="solid" (click)="viewButtons()">
+              BACK
+          </ion-button>
+          <ion-button class="endbuttons" color="primary" size="default" fill="solid">
+          PRINT
+        </ion-button>        
+    </ion-col>
+  </ion-row>
 
 </ion-content>
