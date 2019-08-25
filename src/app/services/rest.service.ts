@@ -3,6 +3,7 @@ import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { Response,Code,User } from './classes';
 import { Observable,throwError } from 'rxjs';
 import { catchError,map } from 'rxjs/operators';
+import { AuthGuard } from '../auth.guard';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class RestService {
   baseUrl:string = 'https://sastramess.herokuapp.com/';
   user = new User();
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private auth: AuthGuard) {}
 
   private handleError(err: HttpErrorResponse){
       console.error(err);
@@ -48,10 +49,19 @@ export class RestService {
         return this.httpClient.post(this.baseUrl +'users?user=1',this.user).pipe(
             map(response => {
                 console.log(response);
+                this.auth.setLoggedIn(true);
                 return new Response(response);
             }),
             catchError(this.handleError)
         );
+    }
+
+    public setLoggedInFalse(){ //Only until session validation
+        this.auth.setLoggedIn(false);
+    }
+
+    public getLoggedIn(){
+        return this.auth.loggedIn;
     }
 
 public getStatus(): Observable<Response>{

@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { NavController,ToastController } from '@ionic/angular';
-import { AuthGuard } from '../auth.guard';
 import { RestService } from '../services/rest.service';
+import { Storage } from '@ionic/storage';
 import { Response } from '../services/classes';
 
 @Component({
@@ -14,11 +14,10 @@ export class HomePage{
     password = null;
     authStatus = new Response();
 
-    constructor(private navCtrl: NavController, private auth: AuthGuard, private restService: RestService,public toastController: ToastController) {}
+    constructor(private storage: Storage, private navCtrl: NavController, private restService: RestService,public toastController: ToastController) {}
 
     ionViewWillEnter(){
-        if(this.auth.loggedIn){
-            console.log(this.auth.loggedIn)
+        if(this.restService.getLoggedIn()){
             this.navCtrl.navigateForward(['buttons'])
         }
     }
@@ -32,8 +31,8 @@ export class HomePage{
             (response) => {
                 this.authStatus = response;
                 if(this.authStatus.Status == "true"){
-                    //this.authStatus.Text is Hostel name. Use this to display in buttons page
-                    this.auth.setLoggedIn(true); // place in rest service, import guard in service
+                    this.storage.set('messname',this.authStatus.Text);
+                    //this.auth.setLoggedIn(true); // place in rest service, import guard in service
                     this.navCtrl.navigateForward(['buttons']);
                 }
                 else{
