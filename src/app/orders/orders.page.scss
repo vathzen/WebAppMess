@@ -2,10 +2,8 @@ ion-content{
     text-align: center;
 }
 ion-card{
-    width: 50%;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 40px;
 }
 .calendar{
     width: 300px;
@@ -25,9 +23,18 @@ table{
     margin-top: 10px;
     border: 1px solid black;
 }
-th, td {
+thead {
+    display: block;
+}
+tbody {
+    display: block;
+    overflow-y: scroll;
+    max-height: 400px;
+}
+thead th, tbody td {
+    width: 70px;
     padding: 5px;
-    border: 1px solid black
+    border: 1px solid black;
 }
 .endbuttons{
     margin: 30px;

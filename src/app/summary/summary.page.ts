@@ -46,11 +46,14 @@ export class SummaryPage implements OnInit {
   itemwise_total:number= null;
 
   ngOnInit() {
-    this.to_picker_date=new Date();
-    this.maxdate=this.to_picker_date;
-    this.from_picker_date=new Date();
-    this.from_picker_date.setDate(1);
-    this.updatePage();
+    this.storage.get('dateStr').then(val =>{
+      var dateStr=val[0];
+      this.to_picker_date=new Date(dateStr);
+      this.from_picker_date=new Date(dateStr);
+      this.maxdate = this.to_picker_date;
+      this.from_picker_date.setDate(1);
+      this.updatePage();
+    });
   }
 
   updatePage(){

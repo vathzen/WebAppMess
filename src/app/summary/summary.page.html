@@ -2,7 +2,7 @@
   <app-toolbar></app-toolbar>
 </ion-header>
 
-<ion-content padding scroll-y=false>
+<ion-content padding>
   <ion-item lines="none">  
     <ion-label class="head">
       MONTHLY SUMMARY
@@ -10,19 +10,20 @@
   </ion-item>
   <ion-toolbar>
       <mat-form-field>
-          <input matInput [matDatepicker]="fromDatepicker" [(ngModel)]="from_picker_date" min="2019-04-01" [max]="maxdate" (dateChange)="updatePage()" placeholder="From">
+          <input matInput [matDatepicker]="fromDatepicker" [(ngModel)]="from_picker_date" min="2019-04-01" [max]="maxdate" placeholder="From">
           <mat-datepicker-toggle matSuffix [for]="fromDatepicker">
               <div class="calenderico" matDatepickerToggleIcon></div>
           </mat-datepicker-toggle>
           <mat-datepicker #fromDatepicker></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-          <input matInput [matDatepicker]="toDatepicker" [(ngModel)]="to_picker_date" min="2019-04-01" [max]="maxdate" (dateChange)="updatePage()" placeholder="To">
+          <input matInput [matDatepicker]="toDatepicker" [(ngModel)]="to_picker_date" min="2019-04-01" [max]="maxdate" placeholder="To">
           <mat-datepicker-toggle matSuffix [for]="toDatepicker">
               <div class="calenderico" matDatepickerToggleIcon></div>
           </mat-datepicker-toggle>
           <mat-datepicker #toDatepicker></mat-datepicker>
       </mat-form-field>
+      <ion-button (click)="updatePage()">GO</ion-button>
   </ion-toolbar>
   <ion-grid>
     <ion-row>
@@ -30,7 +31,7 @@
         <div class="searchbar">
           <ion-searchbar [(ngModel)]="searchnumber" (ionChange)="filterRegnum()" color="light" placeholder="Register Number" type="number"></ion-searchbar>
         </div>
-       <ion-card class="card studentcard">
+       <ion-card class="card">
         <ion-card-header>Student-wise Gross</ion-card-header>
         <ion-card-content>
         <table>
@@ -53,10 +54,10 @@
       </ion-card>
       </ion-col>
       <ion-col>
-          <div class="searchbar baritem">
+          <div class="searchbar">
               <ion-searchbar [(ngModel)]="searchitem" (ionChange)="filterItems()" color="light" placeholder="Item"></ion-searchbar>
             </div>
-            <ion-card class="card itemcard">
+            <ion-card class="card">
               <ion-card-header>Item-wise Gross</ion-card-header>
               <ion-card-content>
                   <ion-list>

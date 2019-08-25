@@ -40,4 +40,13 @@ public getCodes(): Observable<any>{
     );
 }
 
+public getStatus(): Observable<Response>{
+    return this.httpClient.get(this.baseUrl).pipe(
+        map(val => {
+            return new Response(val);
+        }),
+        catchError(this.handleError)
+    );
+}
+
 }

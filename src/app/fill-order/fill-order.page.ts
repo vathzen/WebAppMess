@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoadingController, NavController } from '@ionic/angular';
 import { RestService } from '../services/rest.service';
 import { Response,Menu } from '../services/classes';
+import { Storage } from '@ionic/storage';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -13,9 +14,10 @@ import { ToastController } from '@ionic/angular';
 export class FillOrderPage implements OnInit {
   items=null;
   displayFlag=null;
-  dateStr='2019-07-20'; //get server date assuming we get 2019-07-20
-  date = new Date(this.dateStr);
-  picker_date=this.date;
+  dateStr=null; //get server date assuming we get 2019-07-20
+  date = null;
+  maxdate = null;
+  picker_date=null;
   dropdownOptions: any = {
     cssClass:'dropdown'
   };
@@ -26,10 +28,18 @@ export class FillOrderPage implements OnInit {
     {mealname:'Dinner', icon:'moon', item1:null, item1_cost:null, item2:null, item2_cost:null}
   ];
 
-  constructor(private loadCtrl: LoadingController,private toastController: ToastController,private restService: RestService, public navCtrl: NavController) {
+  constructor(private storage: Storage, private loadCtrl: LoadingController,private toastController: ToastController,private restService: RestService, public navCtrl: NavController) {
   }
 
   ngOnInit() {
+    this.storage.get('dateStr').then(val =>{
+      this.dateStr=val[0];
+      this.date = new Date(this.dateStr + ' 00:00:00');
+      this.maxdate = new Date(this.date);
+      this.maxdate.setDate(this.date.getDate()+7);
+      this.picker_date=this.date;
+      this.updatePage();
+    });
     this.items = [{name:'Veg Fried Rice', cost:30},{name:'Gobi Fried Rice', cost:30},{name:'Paneer Fried Rice', cost:30},
                   {name:'Veg Noodles', cost:30},{name:'Gobi Noodles', cost:30},{name:'Paneer Noodles', cost:30},
                   {name:'Chilly Paneer', cost:30},{name:'Chilly Gobi', cost:30},{name:'Chilly Aloo', cost:30},
@@ -40,7 +50,6 @@ export class FillOrderPage implements OnInit {
                   {name:'Veg Sandwich', cost:30},{name:'Plain Dosa', cost:30},{name:'Uthappam', cost:30},{name:'Onion Uthappam', cost:30},
                   {name:'Bread Butter Jam', cost:30},{name:'Corn Flaskes With Milk', cost:30}];
                   //std menu items from server
-    this.updatePage();
   }
 
   selectChange(entry:any,num:number){
@@ -77,7 +86,7 @@ export class FillOrderPage implements OnInit {
   }
 
   updatePage(){
-    this.displayFlag = this.picker_date.toLocaleDateString() == this.date.toLocaleDateString();
+    this.displayFlag = this.picker_date >= this.date;
       var menu = ['Veg Fried Rice',30,null,null,null,null,null,null,'Veg Noodles',50,'Gobi Noodles',50];//assuming we get this
       var i=0;
       this.menu.forEach(entry => {
