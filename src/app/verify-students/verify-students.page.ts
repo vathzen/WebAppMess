@@ -10,8 +10,8 @@ export class VerifyStudentsPage implements OnInit {
 
   constructor(private restService: RestService) { }
 
-  public data=[{regnum:120004213,code:'QTHSNCAY'},{regnum:120004214,code:'QJMXIHZI'},{regnum:120004215,code:'UZMDOXM'}];
-  //public data = [];
+  //public data=[{regnum:120004213,code:'QTHSNCAY'},{regnum:120004214,code:'QJMXIHZI'},{regnum:120004215,code:'UZMDOXM'}];
+  public data = [];
 
   ngOnInit() {
     console.log('called');
