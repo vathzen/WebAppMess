@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { RestService } from '../../services/rest.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -8,7 +9,7 @@ import { NavController } from '@ionic/angular';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor(public navCtrl: NavController,) { }
+  constructor(public navCtrl: NavController, private restService: RestService) { }
 
   ngOnInit() {}
 
@@ -42,6 +43,7 @@ export class ToolbarComponent implements OnInit {
 
   logout(){
     this.navCtrl.navigateRoot(['home']);
+    this.restService.setLoggedInFalse(); // place in rest service, import guard in service NOTE: Logout will be buggy till then
   }
 
 }

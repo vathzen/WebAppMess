@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { AuthGuard } from '../auth.guard';
 import { Storage } from '@ionic/storage';
 import { RestService } from '../services/rest.service';
 
@@ -11,14 +10,15 @@ import { RestService } from '../services/rest.service';
 })
 export class ButtonsPage implements OnInit {
 
-  constructor(private storage: Storage, public navCtrl: NavController, private auth: AuthGuard, private restService: RestService) { }
+  constructor(private storage: Storage, public navCtrl: NavController, private restService: RestService) { }
   private user={username:'', pswrd:'', contractor:'', messname:''}; //idk whr to use these yet
-  growflag:boolean=true
+  growflag:boolean=true;
 
   ngOnInit() {
     setTimeout(() => {
       this.growflag=false      
     }, 300);
+    this.storage.get('messname').then((val)=>{this.user.messname=val});
     this.restService.getStatus().subscribe(
       (val) => {
           console.log(val);
@@ -61,6 +61,6 @@ export class ButtonsPage implements OnInit {
 
   logout(){
     this.navCtrl.navigateRoot(['home']);
-    this.auth.setLoggedIn(false); // place in rest service, import guard in service NOTE: Logout will be buggy till then
+    this.restService.setLoggedInFalse(); // place in rest service, import guard in service NOTE: Logout will be buggy till then
   }
 }

@@ -25,6 +25,7 @@ export class FillOrderPage implements OnInit {
   public menu=[
     {mealname:'Breakfast', icon:'sunny', item1:null, item1_cost:null, item2:null, item2_cost:null},
     {mealname:'Lunch', icon:'partly-sunny', item1:null, item1_cost:null, item2:null, item2_cost:null},
+    {mealname:'Snacks', icon:'pizza', item1:null, item1_cost:null, item2:null, item2_cost:null},
     {mealname:'Dinner', icon:'moon', item1:null, item1_cost:null, item2:null, item2_cost:null}
   ];
 
@@ -87,7 +88,7 @@ export class FillOrderPage implements OnInit {
 
   updatePage(){
     this.displayFlag = this.picker_date >= this.date;
-      var menu = ['Veg Fried Rice',30,null,null,null,null,null,null,'Veg Noodles',50,'Gobi Noodles',50];//assuming we get this
+      var menu = ['Veg Fried Rice',30,null,null,null,null,null,null,'Lemon Juice',30,'Samosa',20,'Veg Noodles',50,'Gobi Noodles',50];//assuming we get this
       var i=0;
       this.menu.forEach(entry => {
         entry.item1=menu[i];

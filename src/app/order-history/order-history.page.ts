@@ -38,6 +38,8 @@ export class OrderHistoryPage implements OnInit {
       "bf2" : "null-0-0",
       "lun1" : "Poori-35-77",
       "lun2" : "Lasagna-45-13",
+      "snx1" : "Juice-2-10",
+      "snx2" : "Samosa-3-15",
       "din1" : "null-0-0",
       "din2" : "null-0-0",
     },
@@ -47,6 +49,8 @@ export class OrderHistoryPage implements OnInit {
       "bf2" : "null-0-0",
       "lun1" : "Poori-35-77",
       "lun2" : "Lasagna-45-13",
+      "snx1" : "Juice-2-10",
+      "snx2" : "Samosa-3-15",
       "din1" : "null-0-0",
       "din2" : "null-0-0",
     },
@@ -56,6 +60,8 @@ export class OrderHistoryPage implements OnInit {
       "bf2" : "null-0-0",
       "lun1" : "Poori-35-77",
       "lun2" : "Lasagna-45-13",
+      "snx1" : "Juice-2-10",
+      "snx2" : "Samosa-3-15",
       "din1" : "null-0-0",
       "din2" : "null-0-0",
     },{
@@ -64,6 +70,8 @@ export class OrderHistoryPage implements OnInit {
       "bf2" : "null-0-0",
       "lun1" : "Poori-35-77",
       "lun2" : "Lasagna-45-13",
+      "snx1" : "Juice-2-10",
+      "snx2" : "Samosa-3-15",
       "din1" : "null-0-0",
       "din2" : "null-0-0",
     },]
@@ -85,6 +93,14 @@ export class OrderHistoryPage implements OnInit {
         temp_data.push({itemname:tempStringArray[0],quantity:+tempStringArray[1],price:+tempStringArray[2]});
       }
       tempStringArray=element.lun2.split('-');
+      if(tempStringArray[0]!='null'){
+        temp_data.push({itemname:tempStringArray[0],quantity:+tempStringArray[1],price:+tempStringArray[2]});
+      }
+      tempStringArray=element.snx1.split('-');
+      if(tempStringArray[0]!='null'){
+        temp_data.push({itemname:tempStringArray[0],quantity:+tempStringArray[1],price:+tempStringArray[2]});
+      }
+      tempStringArray=element.snx2.split('-');
       if(tempStringArray[0]!='null'){
         temp_data.push({itemname:tempStringArray[0],quantity:+tempStringArray[1],price:+tempStringArray[2]});
       }
