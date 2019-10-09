@@ -11,6 +11,10 @@ export class ManageItemsPage implements OnInit {
   items=null;
   iditems=null
   ids=[];
+  public file:File = null;
+  public imagePath;
+  imageURL: any;
+  public imageMessage:string;
   changes={deletions:[],additions:[],updations:[]};
 
   constructor(public alertController: AlertController) { }
@@ -164,6 +168,30 @@ export class ManageItemsPage implements OnInit {
 
   updateMenu(){
     //upload this.items
+  }
+
+  preview(event) {
+
+    const selectedFile = event.target.files[0];
+    
+    var mimeType = selectedFile.type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.imageMessage = "Only images are supported.";
+      return;
+    }
+ 
+    var reader = new FileReader();
+    this.imagePath = event.target.files;
+    reader.readAsDataURL(selectedFile); 
+    reader.onload = (_event) => { 
+      this.imageURL = reader.result;
+      this.imageMessage=null;
+      //upload selectedFile to server
+
+      //this.imageMessage='Uploading...';                 //Show when upload in progress
+      //this.imageMesssage='Upload Successful!';          //Show if upload successful
+      //this.imageMesssage='Upload Failed!';              //Show if upload failed
+    }
   }
 
 }

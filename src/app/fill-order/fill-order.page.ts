@@ -92,6 +92,7 @@ export class FillOrderPage implements OnInit {
       var i=-1;
       Object.keys(data).forEach(key => {
         i++;
+        this.menu[i].item_array=[]
         data[key].forEach(element => {
           this.menu[i].item_array.push({id: element, name:this.iditems[element].name,cost:this.iditems[element].cost});
         });

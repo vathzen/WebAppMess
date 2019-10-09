@@ -45,20 +45,12 @@
                 <ion-icon color="primary" name="{{entry.icon}}"></ion-icon>
                 <ion-label class="headlabel">{{entry.mealname}}</ion-label>
             </ion-item>
-            <ion-item *ngIf="entry.item1" lines="none">
+            <ion-item class="containeritem" lines="none" *ngFor="let itemm of entry.item_array ; index as i">
                 <ion-item class="firstitem" lines="inset">
-                    <ion-label>{{entry.item1}}</ion-label>
+                    <ion-label>{{itemm.name}}</ion-label>
                 </ion-item>
                 <ion-item slot = "end" lines="inset">
-                    <ion-label *ngIf="entry.item1_cost">Rs. {{entry.item1_cost}}</ion-label>
-                </ion-item>
-            </ion-item>
-            <ion-item *ngIf="entry.item2" lines="none">
-                <ion-item class="firstitem" lines="inset">
-                    <ion-label>{{entry.item2}}</ion-label>
-                </ion-item>
-                <ion-item slot = "end" lines="inset"> 
-                    <ion-label *ngIf="entry.item2_cost">Rs. {{entry.item2_cost}}</ion-label>
+                    <ion-label>Rs. {{itemm.cost}}</ion-label>
                 </ion-item>
             </ion-item>
         </ion-card>

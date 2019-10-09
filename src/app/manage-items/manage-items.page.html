@@ -7,6 +7,15 @@
     <ion-card-header>
         MANAGE ITEMS
         <ion-item lines="none">
+          <input style="display: none" type="file" accept='image/*' (change)="preview($event)" #fileInput>
+          <ion-icon class="trashicon" name="cloud-upload" color="primary" (click)="fileInput.click()"></ion-icon>
+          <ion-label>Upload General Menu Picture</ion-label>
+          <ion-label slot="end" style="color: red" *ngIf="imageMessage">Only images are supported!</ion-label>
+          <ion-thumbnail slot="end">
+              <img [src]="imageURL" *ngIf="imageURL">
+          </ion-thumbnail>
+        </ion-item>
+        <ion-item lines="none">
           <ion-icon class="trashicon" name="add-circle" color="primary" (click)="showForm()"></ion-icon>
           <ion-label>Add item</ion-label>
         </ion-item>
