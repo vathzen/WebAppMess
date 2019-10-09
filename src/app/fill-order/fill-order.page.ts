@@ -13,6 +13,7 @@ import { ToastController } from '@ionic/angular';
 
 export class FillOrderPage implements OnInit {
   items=null;
+  iditems=null;
   displayFlag=null;
   dateStr=null; //get server date assuming we get 2019-07-20
   date = null;
@@ -23,10 +24,10 @@ export class FillOrderPage implements OnInit {
   };
   authStatus = new Response();
   public menu=[
-    {mealname:'Breakfast', icon:'sunny', item1:null, item1_cost:null, item2:null, item2_cost:null},
-    {mealname:'Lunch', icon:'partly-sunny', item1:null, item1_cost:null, item2:null, item2_cost:null},
-    {mealname:'Snacks', icon:'pizza', item1:null, item1_cost:null, item2:null, item2_cost:null},
-    {mealname:'Dinner', icon:'moon', item1:null, item1_cost:null, item2:null, item2_cost:null}
+    {mealname:'Breakfast', icon:'sunny', item_array:[]},
+    {mealname:'Lunch', icon:'partly-sunny', item_array:[]},
+    {mealname:'Snacks', icon:'pizza', item_array:[]},
+    {mealname:'Dinner', icon:'moon', item_array:[]}
   ];
 
   constructor(private storage: Storage, private loadCtrl: LoadingController,private toastController: ToastController,private restService: RestService, public navCtrl: NavController) {
@@ -41,77 +42,80 @@ export class FillOrderPage implements OnInit {
       this.picker_date=this.date;
       this.updatePage();
     });
-    this.items = [{name:'Veg Fried Rice', cost:30},{name:'Gobi Fried Rice', cost:30},{name:'Paneer Fried Rice', cost:30},
-                  {name:'Veg Noodles', cost:30},{name:'Gobi Noodles', cost:30},{name:'Paneer Noodles', cost:30},
-                  {name:'Chilly Paneer', cost:30},{name:'Chilly Gobi', cost:30},{name:'Chilly Aloo', cost:30},
-                  {name:'Chilly Baby Corn', cost:30},{name:'Veg Manchurian Ball', cost:30},{name:'Gobi Manchurian', cost:30},
-                  {name:'Malai Kofta', cost:30},{name:'Kadai Paneer', cost:30},{name:'Dum Aloo', cost:30},{name:'Gobi 65', cost:30},
-                  {name:'Paneer 65', cost:30},{name:'French Fries', cost:30},{name:'Mata Paneer', cost:30},{name:'Puttu With Curry', cost:30},
-                  {name:'Idiyappam With Kurma', cost:30},{name:'Masala Dosa', cost:30},{name:'Aloo Paratha With Curd', cost:30},
-                  {name:'Veg Sandwich', cost:30},{name:'Plain Dosa', cost:30},{name:'Uthappam', cost:30},{name:'Onion Uthappam', cost:30},
-                  {name:'Bread Butter Jam', cost:30},{name:'Corn Flaskes With Milk', cost:30}];
-                  //std menu items from server
+    //std menu items from server
+    this.iditems = {"1":{name:'Veg Salad', cost:20},
+                  "2": {name:'Dosa', cost:40},"3":{ name:'Mushroom 65', cost:40}, "4": { name:'Babycorn 65', cost:47},
+    };
+    this.items=[];
+    Object.keys(this.iditems).forEach(element => {
+      this.items.push({id: element, name:this.iditems[element].name, cost:this.iditems[element].cost});
+    });
   }
 
-  selectChange(entry:any,num:number){
+  selectChange(mealname:string, i:number){
     this.menu.forEach(element => {
-      if(entry.mealname==element.mealname){
-        if(num==1){
-          if(entry.item1=='--None--'){
-            element.item1=null;
-            element.item1_cost=null;
-          }
-          else{
-            this.items.forEach((item: { name: any; cost: any; }) => {
-              if(item.name==entry.item1){
-                element.item1_cost=item.cost;
-              }
-            });
-          }
-        }
-        else{
-          if(entry.item2=='--None--'){
-            element.item2=null;
-            element.item2_cost=null;
-          }
-          else{
-            this.items.forEach((item: { name: any; cost: any; }) => {
-              if(item.name==entry.item2){
-                element.item2_cost=item.cost;
-              }
-            });
-          }
-        }
+      if(mealname==element.mealname){
+          this.items.forEach((item: { name: any; cost: any; id: any; }) => {
+            if(item.name==element.item_array[i].name){
+              element.item_array[i].cost=item.cost;
+              element.item_array[i].id=item.id;
+            }
+          });
+      }
+    });
+  }
+
+  delete(mealname:string, i:number){
+    this.menu.forEach(element => {
+      if(mealname==element.mealname){
+        element.item_array.splice(i,1);
+      }
+    });
+  }
+
+  addSlot(mealname:string){
+    this.menu.forEach(element => {
+      if(element.mealname==mealname){
+        element.item_array.push({id:null, name:null, cost:null})
       }
     });
   }
 
   updatePage(){
     this.displayFlag = this.picker_date >= this.date;
-      var menu = ['Veg Fried Rice',30,null,null,null,null,null,null,'Lemon Juice',30,'Samosa',20,'Veg Noodles',50,'Gobi Noodles',50];//assuming we get this
-      var i=0;
-      this.menu.forEach(entry => {
-        entry.item1=menu[i];
-        entry.item1_cost=menu[i+1];
-        entry.item2=menu[i+2];
-        entry.item2_cost=menu[i+3];
-        i+=4;
+    var data = { //data rcv from server
+      "bf":["1","2","3","4"],
+      "lun":["1"],
+      "snx":["1","2"],
+      "din":["1"]
+    }
+      var i=-1;
+      Object.keys(data).forEach(key => {
+        i++;
+        data[key].forEach(element => {
+          this.menu[i].item_array.push({id: element, name:this.iditems[element].name,cost:this.iditems[element].cost});
+        });
       });
   }
 
   async updateMenu(){
+    var data = {
+      "bf":[],
+      "lun":[],
+      "snx":[],
+      "din":[]
+    }
     //update menu to db
-    var menu=[];
-    this.menu.forEach(entry => {
-      if(entry.item1 == null){
-          entry.item1 = "null";
-      }
-      if(entry.item2 == null){
-          entry.item2 = "null";
-      }
-      menu.push(entry.item1,entry.item1_cost,entry.item2,entry.item2_cost);
+    var i=-1;
+    Object.keys(data).forEach(key => {
+      i++;
+      this.menu[i].item_array.forEach(item => {
+        data[key].push(item.id)
+      });
     });
-    var menuObj = new Menu(menu);
+    
+    console.log(data) //this is menu data
+    //var menuObj = new Menu(data); 
     const loading = await this.loadCtrl.create({
       message: 'Please wait'
     });
@@ -124,7 +128,7 @@ export class FillOrderPage implements OnInit {
         duration: 2000
     });
     await loading.present();
-    this.restService.putMenu(menuObj).subscribe(
+    /*this.restService.putMenu(menuObj).subscribe( //Commenting out until classes.ts are changed properly
         (response) => {
             this.authStatus = response;
             if(this.authStatus.Status == "OK"){
@@ -143,7 +147,7 @@ export class FillOrderPage implements OnInit {
         err => {
             console.log(err);
         }
-    )
+    )*/
   }
 
   viewButtons(){

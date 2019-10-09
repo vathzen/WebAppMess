@@ -22,31 +22,22 @@
                 <ion-icon color="primary" name="{{entry.icon}}"></ion-icon>
                 <ion-label class="headlabel">{{entry.mealname}}</ion-label>
             </ion-item>
-            <ion-item lines="none">
+            <ion-item class="containeritem" lines="none" *ngFor="let itemm of entry.item_array ; index as i">
                 <ion-item class="firstitem" lines="inset">
-                    <ion-label position="floating">Item #1</ion-label>
-                    <ion-select interface="alert" [(ngModel)]="entry.item1" [selectedText]="entry.item1" [interfaceOptions]="dropdownOptions" (ionChange)="selectChange(entry,1)" placeholder="Select Item">
-                        <ion-select-option>--None--</ion-select-option>
+                    <ion-label position="floating">Item #{{i+1}}</ion-label>
+                    <ion-select interface="alert" [(ngModel)]="itemm.name" [selectedText]="itemm.name" [interfaceOptions]="dropdownOptions" (ionChange)="selectChange(entry.mealname,i)" placeholder="Select Item">
                         <ion-select-option *ngFor="let item of items" [value]="item.name">{{item.name}}    (Rs.{{item.cost}})</ion-select-option>
                     </ion-select>
                 </ion-item>
                 <ion-item slot = "end" lines="inset">
-                    <ion-label position="floating">Cost #1 (Rs)</ion-label>
-                    <ion-input [(ngModel)]="entry.item1_cost" disabled=true type="number"></ion-input>
+                    <ion-label position="floating">Cost #{{i+1}} (Rs)</ion-label>
+                    <ion-input [(ngModel)]="itemm.cost" disabled=true type="number"></ion-input>
+                    <ion-icon class="trashicon" name="trash" slot="end" (click)="delete(entry.mealname,i)"></ion-icon>
                 </ion-item>
             </ion-item>
-            <ion-item lines="none">
-                <ion-item class="firstitem" lines="inset">
-                    <ion-label position="floating">Item #2</ion-label>
-                   <ion-select interface="alert" [(ngModel)]="entry.item2" [selectedText]="entry.item2" [interfaceOptions]="dropdownOptions" (ionChange)="selectChange(entry,2)" placeholder="Select Item">
-                        <ion-select-option>--None--</ion-select-option>
-                        <ion-select-option *ngFor="let item of items" [value]="item.name">{{item.name}}    (Rs.{{item.cost}})</ion-select-option>
-                    </ion-select>
-                </ion-item>
-                <ion-item slot = "end" lines="inset">
-                    <ion-label position="floating">Cost #2 (Rs)</ion-label>
-                    <ion-input [(ngModel)]="entry.item2_cost" disabled=true type="number"></ion-input>
-                </ion-item>
+            <ion-item class="additem" (click)="addSlot(entry.mealname)">
+                <ion-icon name="add-circle" color="primary"></ion-icon>
+                <ion-label class="addlabel">Add a slot</ion-label>
             </ion-item>
         </ion-card>
         <ion-card *ngIf="!displayFlag">

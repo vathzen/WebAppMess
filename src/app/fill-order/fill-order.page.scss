@@ -30,8 +30,22 @@ ion-card{
 .headlabel{
     margin-left: 30px;
 }
+.containeritem:hover .trashicon{
+    margin-top: 15px;
+    color: grey;
+}
 .firstitem{
     width: 70%;
+}
+.trashicon{
+    color: white;
+    margin-top: 15px;
+}
+.addlabel{
+    margin-left: 10px;
+}
+.additem:hover{
+    --background: rgb(231, 231, 231);
 }
 .backbutton{
     margin-right: 100px;
