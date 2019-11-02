@@ -2,7 +2,7 @@
   <app-toolbar></app-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="ion-padding">
     <ion-item class="headitem" lines="none">
         <mat-form-field>
             <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="picker_date" min="2019-04-01" [max]="maxdate" (dateChange)="updatePage()" placeholder="Select a Date">

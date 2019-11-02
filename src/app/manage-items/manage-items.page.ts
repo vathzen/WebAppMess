@@ -9,70 +9,54 @@ import { AlertController } from '@ionic/angular';
 export class ManageItemsPage implements OnInit {
 
   items=null;
-  iditems=null
-  ids=[];
+  maxid:number=0;
   public file:File = null;
   public imagePath;
   imageURL: any;
   public imageMessage:string;
-  changes={deletions:[],additions:[],updations:[]};
+  changes=null;
 
   constructor(public alertController: AlertController) { }
 
   ngOnInit() {
-    //get std items from server
-    this.iditems = {"1":{name:'Veg Salad', cost:20},
-                  "2": {name:'Dosa', cost:40},"3":{ name:'Mushroom 65', cost:40}, "4": { name:'Babycorn 65', cost:47},
-    };
+    this.getData()
+  }
+
+  getData(){     //get std items from server
+    var data = 'Veg Salad:20:false,Dosa:40:false,Mushroom 65:40:false,Babycorn 65:47:false,Paneer 65:47:true,Noodles:40:false,Fruit Juice:30:false';
+    var i=1;
     this.items=[];
-    Object.keys(this.iditems).forEach(element => {
-      this.items.push({id: element, name:this.iditems[element].name, cost:this.iditems[element].cost});
+    data.split(',').forEach(set => {
+      var setSplit = set.split(':');
+      if(setSplit[2]=='false'){
+        this.items.push({id: i, name:setSplit[0], cost:+setSplit[1]});
+      }
+      ++i;
     });
-    /*this.items = [{id:1, name:'Veg Salad', cost:20},
-                  {id:2, name:'Gobi 65', cost:40},{id:3, name:'Mushroom 65', cost:40},{id:4, name:'Babycorn 65', cost:47},
-                  {id:5, name:'Mushroom Masala', cost:50},{id:6, name:'Chilly Paneer', cost:50},{id:7, name:'Paneer 65', cost:60},
-                  {id:8, name:'Noodles', cost:50},{id:9, name:'Veg Fried Rice', cost:50},{id:10, name:'Paneer Fried Rice', cost:60},
-                  {id:11, name:'Gobi Fried Rice', cost:50},{id:12, name:'French Fries', cost:40},{id:13, name:'Kuzhi Paniyaram', cost:30},
-                  {id:14, name:'Pani Poori', cost:25},{id:15, name:'Fruit Juice', cost:24},{id:16, name:'Gulab Jamoon', cost:20},
-                  {id:17, name:'Rasa Gulla', cost:20},{id:18, name:'Rasa Malai', cost:20},{id:19, name:'Sweet', cost:20}
-                ];*/
-    this.items.forEach(element => {
-      this.ids.push(element.id);
-    });
-    this.ids.sort(function(a:number, b:number){return a-b});
+    this.maxid=i-1;
+    this.changes={deletions:[],additions:[],updations:[]};
   }
 
   delete(item: any){
-    let deleted = false;
     this.items.splice(this.items.indexOf(item),1);
     let index = this.changes.additions.findIndex(function(element){
-      return element.id==item.id
+      return element.name==item.name
     });
     if(index>-1){
       this.changes.additions.splice(index,1);
     }
     else{
-      this.changes.deletions.push(item.id);
-      deleted=true;
-    }
-    if(!deleted){
-      index = this.changes.updations.findIndex(function(element){
+      let index = this.changes.updations.findIndex(function(element){
         return element.id==item.id
       });
-      index>-1?this.changes.updations.splice(index,1):this.changes.deletions.push(item.id);
+      if(index>-1){
+        this.changes.updations.splice(index,1);
+        this.changes.deletions.push(item.id);
+      }
+      else{
+        this.changes.deletions.push(item.id)
+      }
     }
-  }
-
-  reset(){
-    //get from server, local not working
-    //local might work after you give data... so give data for me to test local
-    this.iditems = {"1":{name:'Veg Salad', cost:20},
-                  "2": {name:'Dosa', cost:40},"3":{ name:'Mushroom 65', cost:40}, "4": { name:'Babycorn 65', cost:47},
-    };
-    this.items=[];
-    Object.keys(this.iditems).forEach(element => {
-      this.items.push({id: element, name:this.iditems[element].name, cost:this.iditems[element].cost});
-    });
   }
 
   async showForm(item=null,index:number=null){
@@ -100,9 +84,9 @@ export class ManageItemsPage implements OnInit {
           text: item?'Edit':'Add',
           handler: (data) => {
             if(item){
-              if(data.item&&data.cost){
+              if(data.item&&data.cost){ //edit
                 let i = this.changes.additions.findIndex(function(element){
-                  return element.id==item.id
+                  return element.name==item.name
                 });
                 if(i>-1){
                   this.changes.additions[i].name=data.item;
@@ -127,7 +111,7 @@ export class ManageItemsPage implements OnInit {
                 this.showForm(item);
               }
             }
-            else{
+            else{ //add
               if(data.item&&data.cost){
                 var flag=false;
                 this.items.forEach(element => {
@@ -139,14 +123,8 @@ export class ManageItemsPage implements OnInit {
                   this.showAlert();
                 }
                 else{
-                  let i:number=null;
-                  for (i = 0; i < this.ids.length; i++) {
-                    if((this.ids[i]+1)!=this.ids[i+1]){
-                      break;
-                    }
-                  }
-                  this.changes.additions.push({id:this.ids[i]+1, name:data.item, cost:data.cost})
-                  this.items.push({id:this.ids[i]+1, name:data.item, cost:data.cost});
+                  this.changes.additions.push({name:data.item, cost:data.cost});
+                  this.items.push({id:null, name:data.item, cost:data.cost});
                 }
               }
             }
@@ -161,13 +139,20 @@ export class ManageItemsPage implements OnInit {
   async showAlert(){
     const alert = await this.alertController.create({
       header: 'Error!',
-      message: 'Item already exists!'
+      message: 'Item already exists!',
+      buttons: ['Ok']
     });
     await alert.present();
   }
 
   updateMenu(){
-    //upload this.items
+    let i=1;
+    this.changes.additions.forEach(element => {
+      if(!element.id){
+        element.id=this.maxid+i;
+        ++i;
+      }
+    });
   }
 
   preview(event) {
